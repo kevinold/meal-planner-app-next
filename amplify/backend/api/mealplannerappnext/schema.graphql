@@ -16,7 +16,7 @@ enum MealFrequency {
 
 type UserGroup
   @model
-  @auth(rules: [{ allow: owner }, { allow: owner, ownerField: "owners" }]) {
+  @auth(rules: [{ allow: owner, ownerField: "owners" }, { allow: owner }]) {
   id: ID!
   meals: [Meal] @hasMany
   owners: [String]
