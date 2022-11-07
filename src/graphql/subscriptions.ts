@@ -5,8 +5,9 @@
 export const onCreateUserGroup = /* GraphQL */ `
   subscription OnCreateUserGroup(
     $filter: ModelSubscriptionUserGroupFilterInput
+    $owner: String
   ) {
-    onCreateUserGroup(filter: $filter) {
+    onCreateUserGroup(filter: $filter, owner: $owner) {
       id
       meals {
         items {
@@ -28,14 +29,16 @@ export const onCreateUserGroup = /* GraphQL */ `
       owners
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onUpdateUserGroup = /* GraphQL */ `
   subscription OnUpdateUserGroup(
     $filter: ModelSubscriptionUserGroupFilterInput
+    $owner: String
   ) {
-    onUpdateUserGroup(filter: $filter) {
+    onUpdateUserGroup(filter: $filter, owner: $owner) {
       id
       meals {
         items {
@@ -57,14 +60,16 @@ export const onUpdateUserGroup = /* GraphQL */ `
       owners
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onDeleteUserGroup = /* GraphQL */ `
   subscription OnDeleteUserGroup(
     $filter: ModelSubscriptionUserGroupFilterInput
+    $owner: String
   ) {
-    onDeleteUserGroup(filter: $filter) {
+    onDeleteUserGroup(filter: $filter, owner: $owner) {
       id
       meals {
         items {
@@ -86,6 +91,7 @@ export const onDeleteUserGroup = /* GraphQL */ `
       owners
       createdAt
       updatedAt
+      owner
     }
   }
 `;
