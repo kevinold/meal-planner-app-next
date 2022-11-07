@@ -81,7 +81,6 @@ export type Meal = {
   timesHad?: number | null,
   freq?: MealFrequency | null,
   instances?: ModelMealInstanceConnection | null,
-  userGroupId: string,
   createdAt: string,
   updatedAt: string,
   userGroupMealsId?: string | null,
@@ -114,7 +113,6 @@ export type ModelMealInstanceConnection = {
 export type MealInstance = {
   __typename: "MealInstance",
   id: string,
-  mealId: string,
   createdAt: string,
   updatedAt: string,
   mealInstancesId?: string | null,
@@ -138,7 +136,6 @@ export type CreateMealInput = {
   nextOccurrence?: string | null,
   timesHad?: number | null,
   freq?: MealFrequency | null,
-  userGroupId: string,
   userGroupMealsId?: string | null,
 };
 
@@ -150,7 +147,6 @@ export type ModelMealConditionInput = {
   nextOccurrence?: ModelStringInput | null,
   timesHad?: ModelIntInput | null,
   freq?: ModelMealFrequencyInput | null,
-  userGroupId?: ModelIDInput | null,
   and?: Array< ModelMealConditionInput | null > | null,
   or?: Array< ModelMealConditionInput | null > | null,
   not?: ModelMealConditionInput | null,
@@ -204,7 +200,6 @@ export type UpdateMealInput = {
   nextOccurrence?: string | null,
   timesHad?: number | null,
   freq?: MealFrequency | null,
-  userGroupId?: string | null,
   userGroupMealsId?: string | null,
 };
 
@@ -214,12 +209,10 @@ export type DeleteMealInput = {
 
 export type CreateMealInstanceInput = {
   id?: string | null,
-  mealId: string,
   mealInstancesId?: string | null,
 };
 
 export type ModelMealInstanceConditionInput = {
-  mealId?: ModelIDInput | null,
   and?: Array< ModelMealInstanceConditionInput | null > | null,
   or?: Array< ModelMealInstanceConditionInput | null > | null,
   not?: ModelMealInstanceConditionInput | null,
@@ -228,7 +221,6 @@ export type ModelMealInstanceConditionInput = {
 
 export type UpdateMealInstanceInput = {
   id: string,
-  mealId?: string | null,
   mealInstancesId?: string | null,
 };
 
@@ -259,7 +251,6 @@ export type ModelMealFilterInput = {
   nextOccurrence?: ModelStringInput | null,
   timesHad?: ModelIntInput | null,
   freq?: ModelMealFrequencyInput | null,
-  userGroupId?: ModelIDInput | null,
   and?: Array< ModelMealFilterInput | null > | null,
   or?: Array< ModelMealFilterInput | null > | null,
   not?: ModelMealFilterInput | null,
@@ -268,7 +259,6 @@ export type ModelMealFilterInput = {
 
 export type ModelMealInstanceFilterInput = {
   id?: ModelIDInput | null,
-  mealId?: ModelIDInput | null,
   and?: Array< ModelMealInstanceFilterInput | null > | null,
   or?: Array< ModelMealInstanceFilterInput | null > | null,
   not?: ModelMealInstanceFilterInput | null,
@@ -305,7 +295,6 @@ export type ModelSubscriptionMealFilterInput = {
   nextOccurrence?: ModelSubscriptionStringInput | null,
   timesHad?: ModelSubscriptionIntInput | null,
   freq?: ModelSubscriptionStringInput | null,
-  userGroupId?: ModelSubscriptionIDInput | null,
   and?: Array< ModelSubscriptionMealFilterInput | null > | null,
   or?: Array< ModelSubscriptionMealFilterInput | null > | null,
 };
@@ -339,7 +328,6 @@ export type ModelSubscriptionIntInput = {
 
 export type ModelSubscriptionMealInstanceFilterInput = {
   id?: ModelSubscriptionIDInput | null,
-  mealId?: ModelSubscriptionIDInput | null,
   and?: Array< ModelSubscriptionMealInstanceFilterInput | null > | null,
   or?: Array< ModelSubscriptionMealInstanceFilterInput | null > | null,
 };
@@ -365,7 +353,6 @@ export type CreateUserGroupMutation = {
         nextOccurrence?: string | null,
         timesHad?: number | null,
         freq?: MealFrequency | null,
-        userGroupId: string,
         createdAt: string,
         updatedAt: string,
         userGroupMealsId?: string | null,
@@ -400,7 +387,6 @@ export type UpdateUserGroupMutation = {
         nextOccurrence?: string | null,
         timesHad?: number | null,
         freq?: MealFrequency | null,
-        userGroupId: string,
         createdAt: string,
         updatedAt: string,
         userGroupMealsId?: string | null,
@@ -435,7 +421,6 @@ export type DeleteUserGroupMutation = {
         nextOccurrence?: string | null,
         timesHad?: number | null,
         freq?: MealFrequency | null,
-        userGroupId: string,
         createdAt: string,
         updatedAt: string,
         userGroupMealsId?: string | null,
@@ -470,14 +455,12 @@ export type CreateMealMutation = {
       items:  Array< {
         __typename: "MealInstance",
         id: string,
-        mealId: string,
         createdAt: string,
         updatedAt: string,
         mealInstancesId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
-    userGroupId: string,
     createdAt: string,
     updatedAt: string,
     userGroupMealsId?: string | null,
@@ -505,14 +488,12 @@ export type UpdateMealMutation = {
       items:  Array< {
         __typename: "MealInstance",
         id: string,
-        mealId: string,
         createdAt: string,
         updatedAt: string,
         mealInstancesId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
-    userGroupId: string,
     createdAt: string,
     updatedAt: string,
     userGroupMealsId?: string | null,
@@ -540,14 +521,12 @@ export type DeleteMealMutation = {
       items:  Array< {
         __typename: "MealInstance",
         id: string,
-        mealId: string,
         createdAt: string,
         updatedAt: string,
         mealInstancesId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
-    userGroupId: string,
     createdAt: string,
     updatedAt: string,
     userGroupMealsId?: string | null,
@@ -563,7 +542,6 @@ export type CreateMealInstanceMutation = {
   createMealInstance?:  {
     __typename: "MealInstance",
     id: string,
-    mealId: string,
     createdAt: string,
     updatedAt: string,
     mealInstancesId?: string | null,
@@ -579,7 +557,6 @@ export type UpdateMealInstanceMutation = {
   updateMealInstance?:  {
     __typename: "MealInstance",
     id: string,
-    mealId: string,
     createdAt: string,
     updatedAt: string,
     mealInstancesId?: string | null,
@@ -595,7 +572,6 @@ export type DeleteMealInstanceMutation = {
   deleteMealInstance?:  {
     __typename: "MealInstance",
     id: string,
-    mealId: string,
     createdAt: string,
     updatedAt: string,
     mealInstancesId?: string | null,
@@ -622,7 +598,6 @@ export type GetUserGroupQuery = {
         nextOccurrence?: string | null,
         timesHad?: number | null,
         freq?: MealFrequency | null,
-        userGroupId: string,
         createdAt: string,
         updatedAt: string,
         userGroupMealsId?: string | null,
@@ -681,14 +656,12 @@ export type GetMealQuery = {
       items:  Array< {
         __typename: "MealInstance",
         id: string,
-        mealId: string,
         createdAt: string,
         updatedAt: string,
         mealInstancesId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
-    userGroupId: string,
     createdAt: string,
     updatedAt: string,
     userGroupMealsId?: string | null,
@@ -718,7 +691,6 @@ export type ListMealsQuery = {
         __typename: "ModelMealInstanceConnection",
         nextToken?: string | null,
       } | null,
-      userGroupId: string,
       createdAt: string,
       updatedAt: string,
       userGroupMealsId?: string | null,
@@ -735,7 +707,6 @@ export type GetMealInstanceQuery = {
   getMealInstance?:  {
     __typename: "MealInstance",
     id: string,
-    mealId: string,
     createdAt: string,
     updatedAt: string,
     mealInstancesId?: string | null,
@@ -754,7 +725,6 @@ export type ListMealInstancesQuery = {
     items:  Array< {
       __typename: "MealInstance",
       id: string,
-      mealId: string,
       createdAt: string,
       updatedAt: string,
       mealInstancesId?: string | null,
@@ -784,7 +754,6 @@ export type OnCreateUserGroupSubscription = {
         nextOccurrence?: string | null,
         timesHad?: number | null,
         freq?: MealFrequency | null,
-        userGroupId: string,
         createdAt: string,
         updatedAt: string,
         userGroupMealsId?: string | null,
@@ -819,7 +788,6 @@ export type OnUpdateUserGroupSubscription = {
         nextOccurrence?: string | null,
         timesHad?: number | null,
         freq?: MealFrequency | null,
-        userGroupId: string,
         createdAt: string,
         updatedAt: string,
         userGroupMealsId?: string | null,
@@ -854,7 +822,6 @@ export type OnDeleteUserGroupSubscription = {
         nextOccurrence?: string | null,
         timesHad?: number | null,
         freq?: MealFrequency | null,
-        userGroupId: string,
         createdAt: string,
         updatedAt: string,
         userGroupMealsId?: string | null,
@@ -888,14 +855,12 @@ export type OnCreateMealSubscription = {
       items:  Array< {
         __typename: "MealInstance",
         id: string,
-        mealId: string,
         createdAt: string,
         updatedAt: string,
         mealInstancesId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
-    userGroupId: string,
     createdAt: string,
     updatedAt: string,
     userGroupMealsId?: string | null,
@@ -922,14 +887,12 @@ export type OnUpdateMealSubscription = {
       items:  Array< {
         __typename: "MealInstance",
         id: string,
-        mealId: string,
         createdAt: string,
         updatedAt: string,
         mealInstancesId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
-    userGroupId: string,
     createdAt: string,
     updatedAt: string,
     userGroupMealsId?: string | null,
@@ -956,14 +919,12 @@ export type OnDeleteMealSubscription = {
       items:  Array< {
         __typename: "MealInstance",
         id: string,
-        mealId: string,
         createdAt: string,
         updatedAt: string,
         mealInstancesId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
-    userGroupId: string,
     createdAt: string,
     updatedAt: string,
     userGroupMealsId?: string | null,
@@ -978,7 +939,6 @@ export type OnCreateMealInstanceSubscription = {
   onCreateMealInstance?:  {
     __typename: "MealInstance",
     id: string,
-    mealId: string,
     createdAt: string,
     updatedAt: string,
     mealInstancesId?: string | null,
@@ -993,7 +953,6 @@ export type OnUpdateMealInstanceSubscription = {
   onUpdateMealInstance?:  {
     __typename: "MealInstance",
     id: string,
-    mealId: string,
     createdAt: string,
     updatedAt: string,
     mealInstancesId?: string | null,
@@ -1008,7 +967,6 @@ export type OnDeleteMealInstanceSubscription = {
   onDeleteMealInstance?:  {
     __typename: "MealInstance",
     id: string,
-    mealId: string,
     createdAt: string,
     updatedAt: string,
     mealInstancesId?: string | null,

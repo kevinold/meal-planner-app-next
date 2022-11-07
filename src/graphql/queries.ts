@@ -16,7 +16,6 @@ export const getUserGroup = /* GraphQL */ `
           nextOccurrence
           timesHad
           freq
-          userGroupId
           createdAt
           updatedAt
           userGroupMealsId
@@ -65,14 +64,12 @@ export const getMeal = /* GraphQL */ `
       instances {
         items {
           id
-          mealId
           createdAt
           updatedAt
           mealInstancesId
         }
         nextToken
       }
-      userGroupId
       createdAt
       updatedAt
       userGroupMealsId
@@ -98,7 +95,6 @@ export const listMeals = /* GraphQL */ `
         instances {
           nextToken
         }
-        userGroupId
         createdAt
         updatedAt
         userGroupMealsId
@@ -111,7 +107,6 @@ export const getMealInstance = /* GraphQL */ `
   query GetMealInstance($id: ID!) {
     getMealInstance(id: $id) {
       id
-      mealId
       createdAt
       updatedAt
       mealInstancesId
@@ -127,7 +122,6 @@ export const listMealInstances = /* GraphQL */ `
     listMealInstances(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        mealId
         createdAt
         updatedAt
         mealInstancesId

@@ -19,7 +19,6 @@ export const onCreateUserGroup = /* GraphQL */ `
           nextOccurrence
           timesHad
           freq
-          userGroupId
           createdAt
           updatedAt
           userGroupMealsId
@@ -50,7 +49,6 @@ export const onUpdateUserGroup = /* GraphQL */ `
           nextOccurrence
           timesHad
           freq
-          userGroupId
           createdAt
           updatedAt
           userGroupMealsId
@@ -81,7 +79,6 @@ export const onDeleteUserGroup = /* GraphQL */ `
           nextOccurrence
           timesHad
           freq
-          userGroupId
           createdAt
           updatedAt
           userGroupMealsId
@@ -109,14 +106,12 @@ export const onCreateMeal = /* GraphQL */ `
       instances {
         items {
           id
-          mealId
           createdAt
           updatedAt
           mealInstancesId
         }
         nextToken
       }
-      userGroupId
       createdAt
       updatedAt
       userGroupMealsId
@@ -137,14 +132,12 @@ export const onUpdateMeal = /* GraphQL */ `
       instances {
         items {
           id
-          mealId
           createdAt
           updatedAt
           mealInstancesId
         }
         nextToken
       }
-      userGroupId
       createdAt
       updatedAt
       userGroupMealsId
@@ -165,14 +158,12 @@ export const onDeleteMeal = /* GraphQL */ `
       instances {
         items {
           id
-          mealId
           createdAt
           updatedAt
           mealInstancesId
         }
         nextToken
       }
-      userGroupId
       createdAt
       updatedAt
       userGroupMealsId
@@ -185,7 +176,6 @@ export const onCreateMealInstance = /* GraphQL */ `
   ) {
     onCreateMealInstance(filter: $filter) {
       id
-      mealId
       createdAt
       updatedAt
       mealInstancesId
@@ -198,7 +188,6 @@ export const onUpdateMealInstance = /* GraphQL */ `
   ) {
     onUpdateMealInstance(filter: $filter) {
       id
-      mealId
       createdAt
       updatedAt
       mealInstancesId
@@ -211,7 +200,6 @@ export const onDeleteMealInstance = /* GraphQL */ `
   ) {
     onDeleteMealInstance(filter: $filter) {
       id
-      mealId
       createdAt
       updatedAt
       mealInstancesId

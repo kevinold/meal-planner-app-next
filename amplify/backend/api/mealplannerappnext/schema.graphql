@@ -32,10 +32,8 @@ type Meal @model @auth(rules: [{ allow: private }]) {
   timesHad: Int
   freq: MealFrequency
   instances: [MealInstance] @hasMany
-  userGroupId: ID!
 }
 
 type MealInstance @model @auth(rules: [{ allow: private }]) {
   id: ID!
-  mealId: ID!
 }

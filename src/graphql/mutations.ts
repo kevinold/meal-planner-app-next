@@ -19,7 +19,6 @@ export const createUserGroup = /* GraphQL */ `
           nextOccurrence
           timesHad
           freq
-          userGroupId
           createdAt
           updatedAt
           userGroupMealsId
@@ -50,7 +49,6 @@ export const updateUserGroup = /* GraphQL */ `
           nextOccurrence
           timesHad
           freq
-          userGroupId
           createdAt
           updatedAt
           userGroupMealsId
@@ -81,7 +79,6 @@ export const deleteUserGroup = /* GraphQL */ `
           nextOccurrence
           timesHad
           freq
-          userGroupId
           createdAt
           updatedAt
           userGroupMealsId
@@ -112,14 +109,12 @@ export const createMeal = /* GraphQL */ `
       instances {
         items {
           id
-          mealId
           createdAt
           updatedAt
           mealInstancesId
         }
         nextToken
       }
-      userGroupId
       createdAt
       updatedAt
       userGroupMealsId
@@ -143,14 +138,12 @@ export const updateMeal = /* GraphQL */ `
       instances {
         items {
           id
-          mealId
           createdAt
           updatedAt
           mealInstancesId
         }
         nextToken
       }
-      userGroupId
       createdAt
       updatedAt
       userGroupMealsId
@@ -174,14 +167,12 @@ export const deleteMeal = /* GraphQL */ `
       instances {
         items {
           id
-          mealId
           createdAt
           updatedAt
           mealInstancesId
         }
         nextToken
       }
-      userGroupId
       createdAt
       updatedAt
       userGroupMealsId
@@ -195,7 +186,6 @@ export const createMealInstance = /* GraphQL */ `
   ) {
     createMealInstance(input: $input, condition: $condition) {
       id
-      mealId
       createdAt
       updatedAt
       mealInstancesId
@@ -209,7 +199,6 @@ export const updateMealInstance = /* GraphQL */ `
   ) {
     updateMealInstance(input: $input, condition: $condition) {
       id
-      mealId
       createdAt
       updatedAt
       mealInstancesId
@@ -223,7 +212,6 @@ export const deleteMealInstance = /* GraphQL */ `
   ) {
     deleteMealInstance(input: $input, condition: $condition) {
       id
-      mealId
       createdAt
       updatedAt
       mealInstancesId
