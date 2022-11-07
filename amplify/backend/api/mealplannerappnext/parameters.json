@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "mealplannerappnext",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authmealplannerappnexte5f263b2",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

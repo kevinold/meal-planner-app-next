@@ -1,0 +1,43 @@
+enum MealStatus {
+  PENDING
+  CURRENT
+  SCHEDULED
+  PAUSED
+}
+
+enum MealFrequency {
+  WEEKLY
+  BIWEEKLY
+  MONTHLY
+  BIMONTHLY
+  QUARTERLY
+  BIQUARTERLY
+}
+
+type UserGroup @model @auth(rules: [{ allow: owner, ownerField: "owners" }]) {
+  id: ID!
+  meals: [Meal] @hasMany
+  owners: [String]
+}
+
+type Meal
+  @model
+  @auth(rules: [{ allow: private }]) {
+  id: ID!
+  title: String!
+  description: String
+  status: MealStatus
+  lastOccurrence: AWSDateTime
+  nextOccurrence: AWSDateTime
+  timesHad: Int
+  freq: MealFrequency
+  instances: [MealInstance] @hasMany
+  userGroupId: ID!
+}
+
+type MealInstance
+  @model
+  @auth(rules: [{ allow: private }]) {
+  id: ID!
+  mealId: ID!
+}
