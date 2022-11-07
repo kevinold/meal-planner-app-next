@@ -1,0 +1,10 @@
+query getUserGroupForUser {
+  listUserGroups(
+    filter: { or: { owners: { contains: "kevinold@gmail.com" } } }
+  ) {
+    nextToken
+    items {
+      id
+    }
+  }
+}
