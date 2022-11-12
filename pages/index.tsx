@@ -100,15 +100,6 @@ const Home: NextPage = () => {
     try {
       const { data } = await API.graphql({
         query: listUserGroups,
-        variables: {
-          filter: {
-            or: {
-              owners: {
-                contains: user.username,
-              },
-            },
-          },
-        },
       });
 
       setUserGroup(data.listUserGroups?.items[0].id);

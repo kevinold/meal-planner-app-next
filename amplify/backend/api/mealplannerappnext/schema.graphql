@@ -18,7 +18,6 @@ type UserGroup
   @model
   @auth(
     rules: [
-      { allow: owner }
       { allow: owner, ownerField: "owners" }
       # https://docs.amplify.aws/guides/functions/graphql-from-lambda/q/platform/js/#iam-authorization
       { allow: private, provider: iam }
