@@ -14,7 +14,15 @@ enum MealFrequency {
   BIQUARTERLY
 }
 
-type UserGroup @model @auth(rules: [{ allow: owner, ownerField: "owners" }]) {
+type UserGroup
+  @model
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "owners" }
+      # https://docs.amplify.aws/guides/functions/graphql-from-lambda/q/platform/js/#iam-authorization
+      { allow: private, provider: iam }
+    ]
+  ) {
   id: ID!
   name: String
   owners: [String]

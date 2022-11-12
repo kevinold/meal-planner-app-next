@@ -13,5 +13,12 @@
   "triggerEventPath": "PreTokenGeneration.event.json",
   "roleName": "mealplannerappnexte5f263b2PreTokenGeneration",
   "skipEdit": true,
-  "enableCors": false
+  "enableCors": false,
+  "permissions": {
+    "api": {
+      "mealplannerappnext": [
+        "Query"
+      ]
+    }
+  }
 }
