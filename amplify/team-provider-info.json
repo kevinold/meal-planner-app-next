@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-mealplannerappnext-dev-173646-unauthRole",
       "StackName": "amplify-mealplannerappnext-dev-173646",
       "StackId": "arn:aws:cloudformation:us-east-2:316137363844:stack/amplify-mealplannerappnext-dev-173646/e1e63ac0-5e2b-11ed-8ad9-023219d3bbda",
-      "AmplifyAppId": "d11d90g5b71f2p"
+      "AmplifyAppId": "d11d90g5b71f2p",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-mealplannerappnext-dev-173646-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
@@ -17,6 +18,12 @@
       },
       "api": {
         "mealplannerappnext": {}
+      },
+      "function": {
+        "mealplannerappnexte5f263b2PreTokenGeneration": {
+          "deploymentBucketName": "amplify-mealplannerappnext-dev-173646-deployment",
+          "s3Key": "amplify-builds/mealplannerappnexte5f263b2PreTokenGeneration-73773448567347326b61-build.zip"
+        }
       }
     }
   }

@@ -1,8 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
     "auth": {
         "mealplannerappnexte5f263b2": {
-            "IdentityPoolId": "string",
-            "IdentityPoolName": "string",
             "UserPoolId": "string",
             "UserPoolArn": "string",
             "UserPoolName": "string",
@@ -14,6 +12,14 @@ export type AmplifyDependentResourcesAttributes = {
         "mealplannerappnext": {
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"
+        }
+    },
+    "function": {
+        "mealplannerappnexte5f263b2PreTokenGeneration": {
+            "Name": "string",
+            "Arn": "string",
+            "LambdaExecutionRole": "string",
+            "Region": "string"
         }
     }
 }
