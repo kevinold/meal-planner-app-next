@@ -63,6 +63,7 @@ export type UserGroup = {
   owners?: Array< string | null > | null,
   createdAt: string,
   updatedAt: string,
+  owner?: string | null,
 };
 
 export type UpdateUserGroupInput = {
@@ -338,6 +339,7 @@ export type CreateUserGroupMutation = {
     owners?: Array< string | null > | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -354,6 +356,7 @@ export type UpdateUserGroupMutation = {
     owners?: Array< string | null > | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -370,6 +373,7 @@ export type DeleteUserGroupMutation = {
     owners?: Array< string | null > | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -535,6 +539,7 @@ export type GetUserGroupQuery = {
     owners?: Array< string | null > | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -554,6 +559,7 @@ export type ListUserGroupsQuery = {
       owners?: Array< string | null > | null,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -661,6 +667,7 @@ export type ListMealHistoriesQuery = {
 
 export type OnCreateUserGroupSubscriptionVariables = {
   filter?: ModelSubscriptionUserGroupFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnCreateUserGroupSubscription = {
@@ -671,11 +678,13 @@ export type OnCreateUserGroupSubscription = {
     owners?: Array< string | null > | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
 export type OnUpdateUserGroupSubscriptionVariables = {
   filter?: ModelSubscriptionUserGroupFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnUpdateUserGroupSubscription = {
@@ -686,11 +695,13 @@ export type OnUpdateUserGroupSubscription = {
     owners?: Array< string | null > | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
 export type OnDeleteUserGroupSubscriptionVariables = {
   filter?: ModelSubscriptionUserGroupFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnDeleteUserGroupSubscription = {
@@ -701,6 +712,7 @@ export type OnDeleteUserGroupSubscription = {
     owners?: Array< string | null > | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 

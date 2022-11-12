@@ -10,6 +10,7 @@ export const getUserGroup = /* GraphQL */ `
       owners
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -26,6 +27,7 @@ export const listUserGroups = /* GraphQL */ `
         owners
         createdAt
         updatedAt
+        owner
       }
       nextToken
     }

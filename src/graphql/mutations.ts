@@ -13,6 +13,7 @@ export const createUserGroup = /* GraphQL */ `
       owners
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -27,6 +28,7 @@ export const updateUserGroup = /* GraphQL */ `
       owners
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -41,6 +43,7 @@ export const deleteUserGroup = /* GraphQL */ `
       owners
       createdAt
       updatedAt
+      owner
     }
   }
 `;
