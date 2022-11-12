@@ -14,26 +14,27 @@ enum MealFrequency {
   BIQUARTERLY
 }
 
-type UserGroup
-  @model
-  @auth(rules: [{ allow: owner, ownerField: "owners" }, { allow: owner }]) {
+type UserGroup @model @auth(rules: [{ allow: owner, ownerField: "owners" }]) {
   id: ID!
-  meals: [Meal] @hasMany
+  name: String
   owners: [String]
 }
 
-type Meal @model @auth(rules: [{ allow: private }]) {
+type Meal
+  @model
+  @auth(rules: [{ allow: owner }, { allow: groups, groupsField: "group" }]) {
   id: ID!
   title: String!
   description: String
   status: MealStatus
-  lastOccurrence: AWSDateTime
-  nextOccurrence: AWSDateTime
-  timesHad: Int
+  lastOccurrence: AWSDate
+  nextOccurrence: AWSDate
   freq: MealFrequency
-  instances: [MealInstance] @hasMany
+  history: [MealHistory] @hasMany
+  group: String
 }
 
-type MealInstance @model @auth(rules: [{ allow: private }]) {
+type MealHistory @model @auth(rules: [{ allow: private }]) {
   id: ID!
+  confirmed: Boolean
 }

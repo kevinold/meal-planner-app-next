@@ -6,26 +6,10 @@ export const getUserGroup = /* GraphQL */ `
   query GetUserGroup($id: ID!) {
     getUserGroup(id: $id) {
       id
-      meals {
-        items {
-          id
-          title
-          description
-          status
-          lastOccurrence
-          nextOccurrence
-          timesHad
-          freq
-          createdAt
-          updatedAt
-          userGroupMealsId
-        }
-        nextToken
-      }
+      name
       owners
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -38,13 +22,10 @@ export const listUserGroups = /* GraphQL */ `
     listUserGroups(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        meals {
-          nextToken
-        }
+        name
         owners
         createdAt
         updatedAt
-        owner
       }
       nextToken
     }
@@ -59,20 +40,21 @@ export const getMeal = /* GraphQL */ `
       status
       lastOccurrence
       nextOccurrence
-      timesHad
       freq
-      instances {
+      history {
         items {
           id
+          confirmed
           createdAt
           updatedAt
-          mealInstancesId
+          mealHistoryId
         }
         nextToken
       }
+      group
       createdAt
       updatedAt
-      userGroupMealsId
+      owner
     }
   }
 `;
@@ -90,41 +72,43 @@ export const listMeals = /* GraphQL */ `
         status
         lastOccurrence
         nextOccurrence
-        timesHad
         freq
-        instances {
+        history {
           nextToken
         }
+        group
         createdAt
         updatedAt
-        userGroupMealsId
+        owner
       }
       nextToken
     }
   }
 `;
-export const getMealInstance = /* GraphQL */ `
-  query GetMealInstance($id: ID!) {
-    getMealInstance(id: $id) {
+export const getMealHistory = /* GraphQL */ `
+  query GetMealHistory($id: ID!) {
+    getMealHistory(id: $id) {
       id
+      confirmed
       createdAt
       updatedAt
-      mealInstancesId
+      mealHistoryId
     }
   }
 `;
-export const listMealInstances = /* GraphQL */ `
-  query ListMealInstances(
-    $filter: ModelMealInstanceFilterInput
+export const listMealHistories = /* GraphQL */ `
+  query ListMealHistories(
+    $filter: ModelMealHistoryFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listMealInstances(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listMealHistories(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        confirmed
         createdAt
         updatedAt
-        mealInstancesId
+        mealHistoryId
       }
       nextToken
     }

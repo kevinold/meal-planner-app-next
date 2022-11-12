@@ -9,26 +9,10 @@ export const createUserGroup = /* GraphQL */ `
   ) {
     createUserGroup(input: $input, condition: $condition) {
       id
-      meals {
-        items {
-          id
-          title
-          description
-          status
-          lastOccurrence
-          nextOccurrence
-          timesHad
-          freq
-          createdAt
-          updatedAt
-          userGroupMealsId
-        }
-        nextToken
-      }
+      name
       owners
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -39,26 +23,10 @@ export const updateUserGroup = /* GraphQL */ `
   ) {
     updateUserGroup(input: $input, condition: $condition) {
       id
-      meals {
-        items {
-          id
-          title
-          description
-          status
-          lastOccurrence
-          nextOccurrence
-          timesHad
-          freq
-          createdAt
-          updatedAt
-          userGroupMealsId
-        }
-        nextToken
-      }
+      name
       owners
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -69,26 +37,10 @@ export const deleteUserGroup = /* GraphQL */ `
   ) {
     deleteUserGroup(input: $input, condition: $condition) {
       id
-      meals {
-        items {
-          id
-          title
-          description
-          status
-          lastOccurrence
-          nextOccurrence
-          timesHad
-          freq
-          createdAt
-          updatedAt
-          userGroupMealsId
-        }
-        nextToken
-      }
+      name
       owners
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -104,20 +56,21 @@ export const createMeal = /* GraphQL */ `
       status
       lastOccurrence
       nextOccurrence
-      timesHad
       freq
-      instances {
+      history {
         items {
           id
+          confirmed
           createdAt
           updatedAt
-          mealInstancesId
+          mealHistoryId
         }
         nextToken
       }
+      group
       createdAt
       updatedAt
-      userGroupMealsId
+      owner
     }
   }
 `;
@@ -133,20 +86,21 @@ export const updateMeal = /* GraphQL */ `
       status
       lastOccurrence
       nextOccurrence
-      timesHad
       freq
-      instances {
+      history {
         items {
           id
+          confirmed
           createdAt
           updatedAt
-          mealInstancesId
+          mealHistoryId
         }
         nextToken
       }
+      group
       createdAt
       updatedAt
-      userGroupMealsId
+      owner
     }
   }
 `;
@@ -162,59 +116,63 @@ export const deleteMeal = /* GraphQL */ `
       status
       lastOccurrence
       nextOccurrence
-      timesHad
       freq
-      instances {
+      history {
         items {
           id
+          confirmed
           createdAt
           updatedAt
-          mealInstancesId
+          mealHistoryId
         }
         nextToken
       }
+      group
       createdAt
       updatedAt
-      userGroupMealsId
+      owner
     }
   }
 `;
-export const createMealInstance = /* GraphQL */ `
-  mutation CreateMealInstance(
-    $input: CreateMealInstanceInput!
-    $condition: ModelMealInstanceConditionInput
+export const createMealHistory = /* GraphQL */ `
+  mutation CreateMealHistory(
+    $input: CreateMealHistoryInput!
+    $condition: ModelMealHistoryConditionInput
   ) {
-    createMealInstance(input: $input, condition: $condition) {
+    createMealHistory(input: $input, condition: $condition) {
       id
+      confirmed
       createdAt
       updatedAt
-      mealInstancesId
+      mealHistoryId
     }
   }
 `;
-export const updateMealInstance = /* GraphQL */ `
-  mutation UpdateMealInstance(
-    $input: UpdateMealInstanceInput!
-    $condition: ModelMealInstanceConditionInput
+export const updateMealHistory = /* GraphQL */ `
+  mutation UpdateMealHistory(
+    $input: UpdateMealHistoryInput!
+    $condition: ModelMealHistoryConditionInput
   ) {
-    updateMealInstance(input: $input, condition: $condition) {
+    updateMealHistory(input: $input, condition: $condition) {
       id
+      confirmed
       createdAt
       updatedAt
-      mealInstancesId
+      mealHistoryId
     }
   }
 `;
-export const deleteMealInstance = /* GraphQL */ `
-  mutation DeleteMealInstance(
-    $input: DeleteMealInstanceInput!
-    $condition: ModelMealInstanceConditionInput
+export const deleteMealHistory = /* GraphQL */ `
+  mutation DeleteMealHistory(
+    $input: DeleteMealHistoryInput!
+    $condition: ModelMealHistoryConditionInput
   ) {
-    deleteMealInstance(input: $input, condition: $condition) {
+    deleteMealHistory(input: $input, condition: $condition) {
       id
+      confirmed
       createdAt
       updatedAt
-      mealInstancesId
+      mealHistoryId
     }
   }
 `;

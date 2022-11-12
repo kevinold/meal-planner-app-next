@@ -5,204 +5,168 @@
 export const onCreateUserGroup = /* GraphQL */ `
   subscription OnCreateUserGroup(
     $filter: ModelSubscriptionUserGroupFilterInput
-    $owner: String
   ) {
-    onCreateUserGroup(filter: $filter, owner: $owner) {
+    onCreateUserGroup(filter: $filter) {
       id
-      meals {
-        items {
-          id
-          title
-          description
-          status
-          lastOccurrence
-          nextOccurrence
-          timesHad
-          freq
-          createdAt
-          updatedAt
-          userGroupMealsId
-        }
-        nextToken
-      }
+      name
       owners
       createdAt
       updatedAt
-      owner
     }
   }
 `;
 export const onUpdateUserGroup = /* GraphQL */ `
   subscription OnUpdateUserGroup(
     $filter: ModelSubscriptionUserGroupFilterInput
-    $owner: String
   ) {
-    onUpdateUserGroup(filter: $filter, owner: $owner) {
+    onUpdateUserGroup(filter: $filter) {
       id
-      meals {
-        items {
-          id
-          title
-          description
-          status
-          lastOccurrence
-          nextOccurrence
-          timesHad
-          freq
-          createdAt
-          updatedAt
-          userGroupMealsId
-        }
-        nextToken
-      }
+      name
       owners
       createdAt
       updatedAt
-      owner
     }
   }
 `;
 export const onDeleteUserGroup = /* GraphQL */ `
   subscription OnDeleteUserGroup(
     $filter: ModelSubscriptionUserGroupFilterInput
+  ) {
+    onDeleteUserGroup(filter: $filter) {
+      id
+      name
+      owners
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateMeal = /* GraphQL */ `
+  subscription OnCreateMeal(
+    $filter: ModelSubscriptionMealFilterInput
     $owner: String
   ) {
-    onDeleteUserGroup(filter: $filter, owner: $owner) {
+    onCreateMeal(filter: $filter, owner: $owner) {
       id
-      meals {
+      title
+      description
+      status
+      lastOccurrence
+      nextOccurrence
+      freq
+      history {
         items {
           id
-          title
-          description
-          status
-          lastOccurrence
-          nextOccurrence
-          timesHad
-          freq
+          confirmed
           createdAt
           updatedAt
-          userGroupMealsId
+          mealHistoryId
         }
         nextToken
       }
-      owners
+      group
       createdAt
       updatedAt
       owner
     }
   }
 `;
-export const onCreateMeal = /* GraphQL */ `
-  subscription OnCreateMeal($filter: ModelSubscriptionMealFilterInput) {
-    onCreateMeal(filter: $filter) {
-      id
-      title
-      description
-      status
-      lastOccurrence
-      nextOccurrence
-      timesHad
-      freq
-      instances {
-        items {
-          id
-          createdAt
-          updatedAt
-          mealInstancesId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      userGroupMealsId
-    }
-  }
-`;
 export const onUpdateMeal = /* GraphQL */ `
-  subscription OnUpdateMeal($filter: ModelSubscriptionMealFilterInput) {
-    onUpdateMeal(filter: $filter) {
+  subscription OnUpdateMeal(
+    $filter: ModelSubscriptionMealFilterInput
+    $owner: String
+  ) {
+    onUpdateMeal(filter: $filter, owner: $owner) {
       id
       title
       description
       status
       lastOccurrence
       nextOccurrence
-      timesHad
       freq
-      instances {
+      history {
         items {
           id
+          confirmed
           createdAt
           updatedAt
-          mealInstancesId
+          mealHistoryId
         }
         nextToken
       }
+      group
       createdAt
       updatedAt
-      userGroupMealsId
+      owner
     }
   }
 `;
 export const onDeleteMeal = /* GraphQL */ `
-  subscription OnDeleteMeal($filter: ModelSubscriptionMealFilterInput) {
-    onDeleteMeal(filter: $filter) {
+  subscription OnDeleteMeal(
+    $filter: ModelSubscriptionMealFilterInput
+    $owner: String
+  ) {
+    onDeleteMeal(filter: $filter, owner: $owner) {
       id
       title
       description
       status
       lastOccurrence
       nextOccurrence
-      timesHad
       freq
-      instances {
+      history {
         items {
           id
+          confirmed
           createdAt
           updatedAt
-          mealInstancesId
+          mealHistoryId
         }
         nextToken
       }
+      group
       createdAt
       updatedAt
-      userGroupMealsId
+      owner
     }
   }
 `;
-export const onCreateMealInstance = /* GraphQL */ `
-  subscription OnCreateMealInstance(
-    $filter: ModelSubscriptionMealInstanceFilterInput
+export const onCreateMealHistory = /* GraphQL */ `
+  subscription OnCreateMealHistory(
+    $filter: ModelSubscriptionMealHistoryFilterInput
   ) {
-    onCreateMealInstance(filter: $filter) {
+    onCreateMealHistory(filter: $filter) {
       id
+      confirmed
       createdAt
       updatedAt
-      mealInstancesId
+      mealHistoryId
     }
   }
 `;
-export const onUpdateMealInstance = /* GraphQL */ `
-  subscription OnUpdateMealInstance(
-    $filter: ModelSubscriptionMealInstanceFilterInput
+export const onUpdateMealHistory = /* GraphQL */ `
+  subscription OnUpdateMealHistory(
+    $filter: ModelSubscriptionMealHistoryFilterInput
   ) {
-    onUpdateMealInstance(filter: $filter) {
+    onUpdateMealHistory(filter: $filter) {
       id
+      confirmed
       createdAt
       updatedAt
-      mealInstancesId
+      mealHistoryId
     }
   }
 `;
-export const onDeleteMealInstance = /* GraphQL */ `
-  subscription OnDeleteMealInstance(
-    $filter: ModelSubscriptionMealInstanceFilterInput
+export const onDeleteMealHistory = /* GraphQL */ `
+  subscription OnDeleteMealHistory(
+    $filter: ModelSubscriptionMealHistoryFilterInput
   ) {
-    onDeleteMealInstance(filter: $filter) {
+    onDeleteMealHistory(filter: $filter) {
       id
+      confirmed
       createdAt
       updatedAt
-      mealInstancesId
+      mealHistoryId
     }
   }
 `;

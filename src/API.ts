@@ -4,10 +4,12 @@
 
 export type CreateUserGroupInput = {
   id?: string | null,
+  name?: string | null,
   owners?: Array< string | null > | null,
 };
 
 export type ModelUserGroupConditionInput = {
+  name?: ModelStringInput | null,
   owners?: ModelStringInput | null,
   and?: Array< ModelUserGroupConditionInput | null > | null,
   or?: Array< ModelUserGroupConditionInput | null > | null,
@@ -57,33 +59,31 @@ export type ModelSizeInput = {
 export type UserGroup = {
   __typename: "UserGroup",
   id: string,
-  meals?: ModelMealConnection | null,
+  name?: string | null,
   owners?: Array< string | null > | null,
   createdAt: string,
   updatedAt: string,
-  owner?: string | null,
 };
 
-export type ModelMealConnection = {
-  __typename: "ModelMealConnection",
-  items:  Array<Meal | null >,
-  nextToken?: string | null,
-};
-
-export type Meal = {
-  __typename: "Meal",
+export type UpdateUserGroupInput = {
   id: string,
+  name?: string | null,
+  owners?: Array< string | null > | null,
+};
+
+export type DeleteUserGroupInput = {
+  id: string,
+};
+
+export type CreateMealInput = {
+  id?: string | null,
   title: string,
   description?: string | null,
   status?: MealStatus | null,
   lastOccurrence?: string | null,
   nextOccurrence?: string | null,
-  timesHad?: number | null,
   freq?: MealFrequency | null,
-  instances?: ModelMealInstanceConnection | null,
-  createdAt: string,
-  updatedAt: string,
-  userGroupMealsId?: string | null,
+  group?: string | null,
 };
 
 export enum MealStatus {
@@ -104,53 +104,17 @@ export enum MealFrequency {
 }
 
 
-export type ModelMealInstanceConnection = {
-  __typename: "ModelMealInstanceConnection",
-  items:  Array<MealInstance | null >,
-  nextToken?: string | null,
-};
-
-export type MealInstance = {
-  __typename: "MealInstance",
-  id: string,
-  createdAt: string,
-  updatedAt: string,
-  mealInstancesId?: string | null,
-};
-
-export type UpdateUserGroupInput = {
-  id: string,
-  owners?: Array< string | null > | null,
-};
-
-export type DeleteUserGroupInput = {
-  id: string,
-};
-
-export type CreateMealInput = {
-  id?: string | null,
-  title: string,
-  description?: string | null,
-  status?: MealStatus | null,
-  lastOccurrence?: string | null,
-  nextOccurrence?: string | null,
-  timesHad?: number | null,
-  freq?: MealFrequency | null,
-  userGroupMealsId?: string | null,
-};
-
 export type ModelMealConditionInput = {
   title?: ModelStringInput | null,
   description?: ModelStringInput | null,
   status?: ModelMealStatusInput | null,
   lastOccurrence?: ModelStringInput | null,
   nextOccurrence?: ModelStringInput | null,
-  timesHad?: ModelIntInput | null,
   freq?: ModelMealFrequencyInput | null,
+  group?: ModelStringInput | null,
   and?: Array< ModelMealConditionInput | null > | null,
   or?: Array< ModelMealConditionInput | null > | null,
   not?: ModelMealConditionInput | null,
-  userGroupMealsId?: ModelIDInput | null,
 };
 
 export type ModelMealStatusInput = {
@@ -158,21 +122,76 @@ export type ModelMealStatusInput = {
   ne?: MealStatus | null,
 };
 
-export type ModelIntInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-};
-
 export type ModelMealFrequencyInput = {
   eq?: MealFrequency | null,
   ne?: MealFrequency | null,
+};
+
+export type Meal = {
+  __typename: "Meal",
+  id: string,
+  title: string,
+  description?: string | null,
+  status?: MealStatus | null,
+  lastOccurrence?: string | null,
+  nextOccurrence?: string | null,
+  freq?: MealFrequency | null,
+  history?: ModelMealHistoryConnection | null,
+  group?: string | null,
+  createdAt: string,
+  updatedAt: string,
+  owner?: string | null,
+};
+
+export type ModelMealHistoryConnection = {
+  __typename: "ModelMealHistoryConnection",
+  items:  Array<MealHistory | null >,
+  nextToken?: string | null,
+};
+
+export type MealHistory = {
+  __typename: "MealHistory",
+  id: string,
+  confirmed?: boolean | null,
+  createdAt: string,
+  updatedAt: string,
+  mealHistoryId?: string | null,
+};
+
+export type UpdateMealInput = {
+  id: string,
+  title?: string | null,
+  description?: string | null,
+  status?: MealStatus | null,
+  lastOccurrence?: string | null,
+  nextOccurrence?: string | null,
+  freq?: MealFrequency | null,
+  group?: string | null,
+};
+
+export type DeleteMealInput = {
+  id: string,
+};
+
+export type CreateMealHistoryInput = {
+  id?: string | null,
+  confirmed?: boolean | null,
+  mealHistoryId?: string | null,
+};
+
+export type ModelMealHistoryConditionInput = {
+  confirmed?: ModelBooleanInput | null,
+  and?: Array< ModelMealHistoryConditionInput | null > | null,
+  or?: Array< ModelMealHistoryConditionInput | null > | null,
+  not?: ModelMealHistoryConditionInput | null,
+  mealHistoryId?: ModelIDInput | null,
+};
+
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
 };
 
 export type ModelIDInput = {
@@ -191,45 +210,19 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type UpdateMealInput = {
+export type UpdateMealHistoryInput = {
   id: string,
-  title?: string | null,
-  description?: string | null,
-  status?: MealStatus | null,
-  lastOccurrence?: string | null,
-  nextOccurrence?: string | null,
-  timesHad?: number | null,
-  freq?: MealFrequency | null,
-  userGroupMealsId?: string | null,
+  confirmed?: boolean | null,
+  mealHistoryId?: string | null,
 };
 
-export type DeleteMealInput = {
-  id: string,
-};
-
-export type CreateMealInstanceInput = {
-  id?: string | null,
-  mealInstancesId?: string | null,
-};
-
-export type ModelMealInstanceConditionInput = {
-  and?: Array< ModelMealInstanceConditionInput | null > | null,
-  or?: Array< ModelMealInstanceConditionInput | null > | null,
-  not?: ModelMealInstanceConditionInput | null,
-  mealInstancesId?: ModelIDInput | null,
-};
-
-export type UpdateMealInstanceInput = {
-  id: string,
-  mealInstancesId?: string | null,
-};
-
-export type DeleteMealInstanceInput = {
+export type DeleteMealHistoryInput = {
   id: string,
 };
 
 export type ModelUserGroupFilterInput = {
   id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
   owners?: ModelStringInput | null,
   and?: Array< ModelUserGroupFilterInput | null > | null,
   or?: Array< ModelUserGroupFilterInput | null > | null,
@@ -249,29 +242,51 @@ export type ModelMealFilterInput = {
   status?: ModelMealStatusInput | null,
   lastOccurrence?: ModelStringInput | null,
   nextOccurrence?: ModelStringInput | null,
-  timesHad?: ModelIntInput | null,
   freq?: ModelMealFrequencyInput | null,
+  group?: ModelStringInput | null,
   and?: Array< ModelMealFilterInput | null > | null,
   or?: Array< ModelMealFilterInput | null > | null,
   not?: ModelMealFilterInput | null,
-  userGroupMealsId?: ModelIDInput | null,
 };
 
-export type ModelMealInstanceFilterInput = {
+export type ModelMealConnection = {
+  __typename: "ModelMealConnection",
+  items:  Array<Meal | null >,
+  nextToken?: string | null,
+};
+
+export type ModelMealHistoryFilterInput = {
   id?: ModelIDInput | null,
-  and?: Array< ModelMealInstanceFilterInput | null > | null,
-  or?: Array< ModelMealInstanceFilterInput | null > | null,
-  not?: ModelMealInstanceFilterInput | null,
-  mealInstancesId?: ModelIDInput | null,
+  confirmed?: ModelBooleanInput | null,
+  and?: Array< ModelMealHistoryFilterInput | null > | null,
+  or?: Array< ModelMealHistoryFilterInput | null > | null,
+  not?: ModelMealHistoryFilterInput | null,
+  mealHistoryId?: ModelIDInput | null,
 };
 
 export type ModelSubscriptionUserGroupFilterInput = {
   id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionUserGroupFilterInput | null > | null,
   or?: Array< ModelSubscriptionUserGroupFilterInput | null > | null,
 };
 
 export type ModelSubscriptionIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  in?: Array< string | null > | null,
+  notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionStringInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -293,43 +308,21 @@ export type ModelSubscriptionMealFilterInput = {
   status?: ModelSubscriptionStringInput | null,
   lastOccurrence?: ModelSubscriptionStringInput | null,
   nextOccurrence?: ModelSubscriptionStringInput | null,
-  timesHad?: ModelSubscriptionIntInput | null,
   freq?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionMealFilterInput | null > | null,
   or?: Array< ModelSubscriptionMealFilterInput | null > | null,
 };
 
-export type ModelSubscriptionStringInput = {
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-  in?: Array< string | null > | null,
-  notIn?: Array< string | null > | null,
-};
-
-export type ModelSubscriptionIntInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  in?: Array< number | null > | null,
-  notIn?: Array< number | null > | null,
-};
-
-export type ModelSubscriptionMealInstanceFilterInput = {
+export type ModelSubscriptionMealHistoryFilterInput = {
   id?: ModelSubscriptionIDInput | null,
-  and?: Array< ModelSubscriptionMealInstanceFilterInput | null > | null,
-  or?: Array< ModelSubscriptionMealInstanceFilterInput | null > | null,
+  confirmed?: ModelSubscriptionBooleanInput | null,
+  and?: Array< ModelSubscriptionMealHistoryFilterInput | null > | null,
+  or?: Array< ModelSubscriptionMealHistoryFilterInput | null > | null,
+};
+
+export type ModelSubscriptionBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
 };
 
 export type CreateUserGroupMutationVariables = {
@@ -341,28 +334,10 @@ export type CreateUserGroupMutation = {
   createUserGroup?:  {
     __typename: "UserGroup",
     id: string,
-    meals?:  {
-      __typename: "ModelMealConnection",
-      items:  Array< {
-        __typename: "Meal",
-        id: string,
-        title: string,
-        description?: string | null,
-        status?: MealStatus | null,
-        lastOccurrence?: string | null,
-        nextOccurrence?: string | null,
-        timesHad?: number | null,
-        freq?: MealFrequency | null,
-        createdAt: string,
-        updatedAt: string,
-        userGroupMealsId?: string | null,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
+    name?: string | null,
     owners?: Array< string | null > | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
@@ -375,28 +350,10 @@ export type UpdateUserGroupMutation = {
   updateUserGroup?:  {
     __typename: "UserGroup",
     id: string,
-    meals?:  {
-      __typename: "ModelMealConnection",
-      items:  Array< {
-        __typename: "Meal",
-        id: string,
-        title: string,
-        description?: string | null,
-        status?: MealStatus | null,
-        lastOccurrence?: string | null,
-        nextOccurrence?: string | null,
-        timesHad?: number | null,
-        freq?: MealFrequency | null,
-        createdAt: string,
-        updatedAt: string,
-        userGroupMealsId?: string | null,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
+    name?: string | null,
     owners?: Array< string | null > | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
@@ -409,28 +366,10 @@ export type DeleteUserGroupMutation = {
   deleteUserGroup?:  {
     __typename: "UserGroup",
     id: string,
-    meals?:  {
-      __typename: "ModelMealConnection",
-      items:  Array< {
-        __typename: "Meal",
-        id: string,
-        title: string,
-        description?: string | null,
-        status?: MealStatus | null,
-        lastOccurrence?: string | null,
-        nextOccurrence?: string | null,
-        timesHad?: number | null,
-        freq?: MealFrequency | null,
-        createdAt: string,
-        updatedAt: string,
-        userGroupMealsId?: string | null,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
+    name?: string | null,
     owners?: Array< string | null > | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
@@ -448,22 +387,23 @@ export type CreateMealMutation = {
     status?: MealStatus | null,
     lastOccurrence?: string | null,
     nextOccurrence?: string | null,
-    timesHad?: number | null,
     freq?: MealFrequency | null,
-    instances?:  {
-      __typename: "ModelMealInstanceConnection",
+    history?:  {
+      __typename: "ModelMealHistoryConnection",
       items:  Array< {
-        __typename: "MealInstance",
+        __typename: "MealHistory",
         id: string,
+        confirmed?: boolean | null,
         createdAt: string,
         updatedAt: string,
-        mealInstancesId?: string | null,
+        mealHistoryId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
+    group?: string | null,
     createdAt: string,
     updatedAt: string,
-    userGroupMealsId?: string | null,
+    owner?: string | null,
   } | null,
 };
 
@@ -481,22 +421,23 @@ export type UpdateMealMutation = {
     status?: MealStatus | null,
     lastOccurrence?: string | null,
     nextOccurrence?: string | null,
-    timesHad?: number | null,
     freq?: MealFrequency | null,
-    instances?:  {
-      __typename: "ModelMealInstanceConnection",
+    history?:  {
+      __typename: "ModelMealHistoryConnection",
       items:  Array< {
-        __typename: "MealInstance",
+        __typename: "MealHistory",
         id: string,
+        confirmed?: boolean | null,
         createdAt: string,
         updatedAt: string,
-        mealInstancesId?: string | null,
+        mealHistoryId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
+    group?: string | null,
     createdAt: string,
     updatedAt: string,
-    userGroupMealsId?: string | null,
+    owner?: string | null,
   } | null,
 };
 
@@ -514,67 +455,71 @@ export type DeleteMealMutation = {
     status?: MealStatus | null,
     lastOccurrence?: string | null,
     nextOccurrence?: string | null,
-    timesHad?: number | null,
     freq?: MealFrequency | null,
-    instances?:  {
-      __typename: "ModelMealInstanceConnection",
+    history?:  {
+      __typename: "ModelMealHistoryConnection",
       items:  Array< {
-        __typename: "MealInstance",
+        __typename: "MealHistory",
         id: string,
+        confirmed?: boolean | null,
         createdAt: string,
         updatedAt: string,
-        mealInstancesId?: string | null,
+        mealHistoryId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
+    group?: string | null,
     createdAt: string,
     updatedAt: string,
-    userGroupMealsId?: string | null,
+    owner?: string | null,
   } | null,
 };
 
-export type CreateMealInstanceMutationVariables = {
-  input: CreateMealInstanceInput,
-  condition?: ModelMealInstanceConditionInput | null,
+export type CreateMealHistoryMutationVariables = {
+  input: CreateMealHistoryInput,
+  condition?: ModelMealHistoryConditionInput | null,
 };
 
-export type CreateMealInstanceMutation = {
-  createMealInstance?:  {
-    __typename: "MealInstance",
+export type CreateMealHistoryMutation = {
+  createMealHistory?:  {
+    __typename: "MealHistory",
     id: string,
+    confirmed?: boolean | null,
     createdAt: string,
     updatedAt: string,
-    mealInstancesId?: string | null,
+    mealHistoryId?: string | null,
   } | null,
 };
 
-export type UpdateMealInstanceMutationVariables = {
-  input: UpdateMealInstanceInput,
-  condition?: ModelMealInstanceConditionInput | null,
+export type UpdateMealHistoryMutationVariables = {
+  input: UpdateMealHistoryInput,
+  condition?: ModelMealHistoryConditionInput | null,
 };
 
-export type UpdateMealInstanceMutation = {
-  updateMealInstance?:  {
-    __typename: "MealInstance",
+export type UpdateMealHistoryMutation = {
+  updateMealHistory?:  {
+    __typename: "MealHistory",
     id: string,
+    confirmed?: boolean | null,
     createdAt: string,
     updatedAt: string,
-    mealInstancesId?: string | null,
+    mealHistoryId?: string | null,
   } | null,
 };
 
-export type DeleteMealInstanceMutationVariables = {
-  input: DeleteMealInstanceInput,
-  condition?: ModelMealInstanceConditionInput | null,
+export type DeleteMealHistoryMutationVariables = {
+  input: DeleteMealHistoryInput,
+  condition?: ModelMealHistoryConditionInput | null,
 };
 
-export type DeleteMealInstanceMutation = {
-  deleteMealInstance?:  {
-    __typename: "MealInstance",
+export type DeleteMealHistoryMutation = {
+  deleteMealHistory?:  {
+    __typename: "MealHistory",
     id: string,
+    confirmed?: boolean | null,
     createdAt: string,
     updatedAt: string,
-    mealInstancesId?: string | null,
+    mealHistoryId?: string | null,
   } | null,
 };
 
@@ -586,28 +531,10 @@ export type GetUserGroupQuery = {
   getUserGroup?:  {
     __typename: "UserGroup",
     id: string,
-    meals?:  {
-      __typename: "ModelMealConnection",
-      items:  Array< {
-        __typename: "Meal",
-        id: string,
-        title: string,
-        description?: string | null,
-        status?: MealStatus | null,
-        lastOccurrence?: string | null,
-        nextOccurrence?: string | null,
-        timesHad?: number | null,
-        freq?: MealFrequency | null,
-        createdAt: string,
-        updatedAt: string,
-        userGroupMealsId?: string | null,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
+    name?: string | null,
     owners?: Array< string | null > | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
@@ -623,14 +550,10 @@ export type ListUserGroupsQuery = {
     items:  Array< {
       __typename: "UserGroup",
       id: string,
-      meals?:  {
-        __typename: "ModelMealConnection",
-        nextToken?: string | null,
-      } | null,
+      name?: string | null,
       owners?: Array< string | null > | null,
       createdAt: string,
       updatedAt: string,
-      owner?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -649,22 +572,23 @@ export type GetMealQuery = {
     status?: MealStatus | null,
     lastOccurrence?: string | null,
     nextOccurrence?: string | null,
-    timesHad?: number | null,
     freq?: MealFrequency | null,
-    instances?:  {
-      __typename: "ModelMealInstanceConnection",
+    history?:  {
+      __typename: "ModelMealHistoryConnection",
       items:  Array< {
-        __typename: "MealInstance",
+        __typename: "MealHistory",
         id: string,
+        confirmed?: boolean | null,
         createdAt: string,
         updatedAt: string,
-        mealInstancesId?: string | null,
+        mealHistoryId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
+    group?: string | null,
     createdAt: string,
     updatedAt: string,
-    userGroupMealsId?: string | null,
+    owner?: string | null,
   } | null,
 };
 
@@ -685,49 +609,51 @@ export type ListMealsQuery = {
       status?: MealStatus | null,
       lastOccurrence?: string | null,
       nextOccurrence?: string | null,
-      timesHad?: number | null,
       freq?: MealFrequency | null,
-      instances?:  {
-        __typename: "ModelMealInstanceConnection",
+      history?:  {
+        __typename: "ModelMealHistoryConnection",
         nextToken?: string | null,
       } | null,
+      group?: string | null,
       createdAt: string,
       updatedAt: string,
-      userGroupMealsId?: string | null,
+      owner?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
 };
 
-export type GetMealInstanceQueryVariables = {
+export type GetMealHistoryQueryVariables = {
   id: string,
 };
 
-export type GetMealInstanceQuery = {
-  getMealInstance?:  {
-    __typename: "MealInstance",
+export type GetMealHistoryQuery = {
+  getMealHistory?:  {
+    __typename: "MealHistory",
     id: string,
+    confirmed?: boolean | null,
     createdAt: string,
     updatedAt: string,
-    mealInstancesId?: string | null,
+    mealHistoryId?: string | null,
   } | null,
 };
 
-export type ListMealInstancesQueryVariables = {
-  filter?: ModelMealInstanceFilterInput | null,
+export type ListMealHistoriesQueryVariables = {
+  filter?: ModelMealHistoryFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListMealInstancesQuery = {
-  listMealInstances?:  {
-    __typename: "ModelMealInstanceConnection",
+export type ListMealHistoriesQuery = {
+  listMealHistories?:  {
+    __typename: "ModelMealHistoryConnection",
     items:  Array< {
-      __typename: "MealInstance",
+      __typename: "MealHistory",
       id: string,
+      confirmed?: boolean | null,
       createdAt: string,
       updatedAt: string,
-      mealInstancesId?: string | null,
+      mealHistoryId?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -735,108 +661,52 @@ export type ListMealInstancesQuery = {
 
 export type OnCreateUserGroupSubscriptionVariables = {
   filter?: ModelSubscriptionUserGroupFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnCreateUserGroupSubscription = {
   onCreateUserGroup?:  {
     __typename: "UserGroup",
     id: string,
-    meals?:  {
-      __typename: "ModelMealConnection",
-      items:  Array< {
-        __typename: "Meal",
-        id: string,
-        title: string,
-        description?: string | null,
-        status?: MealStatus | null,
-        lastOccurrence?: string | null,
-        nextOccurrence?: string | null,
-        timesHad?: number | null,
-        freq?: MealFrequency | null,
-        createdAt: string,
-        updatedAt: string,
-        userGroupMealsId?: string | null,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
+    name?: string | null,
     owners?: Array< string | null > | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
 export type OnUpdateUserGroupSubscriptionVariables = {
   filter?: ModelSubscriptionUserGroupFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnUpdateUserGroupSubscription = {
   onUpdateUserGroup?:  {
     __typename: "UserGroup",
     id: string,
-    meals?:  {
-      __typename: "ModelMealConnection",
-      items:  Array< {
-        __typename: "Meal",
-        id: string,
-        title: string,
-        description?: string | null,
-        status?: MealStatus | null,
-        lastOccurrence?: string | null,
-        nextOccurrence?: string | null,
-        timesHad?: number | null,
-        freq?: MealFrequency | null,
-        createdAt: string,
-        updatedAt: string,
-        userGroupMealsId?: string | null,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
+    name?: string | null,
     owners?: Array< string | null > | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
 export type OnDeleteUserGroupSubscriptionVariables = {
   filter?: ModelSubscriptionUserGroupFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnDeleteUserGroupSubscription = {
   onDeleteUserGroup?:  {
     __typename: "UserGroup",
     id: string,
-    meals?:  {
-      __typename: "ModelMealConnection",
-      items:  Array< {
-        __typename: "Meal",
-        id: string,
-        title: string,
-        description?: string | null,
-        status?: MealStatus | null,
-        lastOccurrence?: string | null,
-        nextOccurrence?: string | null,
-        timesHad?: number | null,
-        freq?: MealFrequency | null,
-        createdAt: string,
-        updatedAt: string,
-        userGroupMealsId?: string | null,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
+    name?: string | null,
     owners?: Array< string | null > | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
 export type OnCreateMealSubscriptionVariables = {
   filter?: ModelSubscriptionMealFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnCreateMealSubscription = {
@@ -848,27 +718,29 @@ export type OnCreateMealSubscription = {
     status?: MealStatus | null,
     lastOccurrence?: string | null,
     nextOccurrence?: string | null,
-    timesHad?: number | null,
     freq?: MealFrequency | null,
-    instances?:  {
-      __typename: "ModelMealInstanceConnection",
+    history?:  {
+      __typename: "ModelMealHistoryConnection",
       items:  Array< {
-        __typename: "MealInstance",
+        __typename: "MealHistory",
         id: string,
+        confirmed?: boolean | null,
         createdAt: string,
         updatedAt: string,
-        mealInstancesId?: string | null,
+        mealHistoryId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
+    group?: string | null,
     createdAt: string,
     updatedAt: string,
-    userGroupMealsId?: string | null,
+    owner?: string | null,
   } | null,
 };
 
 export type OnUpdateMealSubscriptionVariables = {
   filter?: ModelSubscriptionMealFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnUpdateMealSubscription = {
@@ -880,27 +752,29 @@ export type OnUpdateMealSubscription = {
     status?: MealStatus | null,
     lastOccurrence?: string | null,
     nextOccurrence?: string | null,
-    timesHad?: number | null,
     freq?: MealFrequency | null,
-    instances?:  {
-      __typename: "ModelMealInstanceConnection",
+    history?:  {
+      __typename: "ModelMealHistoryConnection",
       items:  Array< {
-        __typename: "MealInstance",
+        __typename: "MealHistory",
         id: string,
+        confirmed?: boolean | null,
         createdAt: string,
         updatedAt: string,
-        mealInstancesId?: string | null,
+        mealHistoryId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
+    group?: string | null,
     createdAt: string,
     updatedAt: string,
-    userGroupMealsId?: string | null,
+    owner?: string | null,
   } | null,
 };
 
 export type OnDeleteMealSubscriptionVariables = {
   filter?: ModelSubscriptionMealFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnDeleteMealSubscription = {
@@ -912,63 +786,67 @@ export type OnDeleteMealSubscription = {
     status?: MealStatus | null,
     lastOccurrence?: string | null,
     nextOccurrence?: string | null,
-    timesHad?: number | null,
     freq?: MealFrequency | null,
-    instances?:  {
-      __typename: "ModelMealInstanceConnection",
+    history?:  {
+      __typename: "ModelMealHistoryConnection",
       items:  Array< {
-        __typename: "MealInstance",
+        __typename: "MealHistory",
         id: string,
+        confirmed?: boolean | null,
         createdAt: string,
         updatedAt: string,
-        mealInstancesId?: string | null,
+        mealHistoryId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
+    group?: string | null,
     createdAt: string,
     updatedAt: string,
-    userGroupMealsId?: string | null,
+    owner?: string | null,
   } | null,
 };
 
-export type OnCreateMealInstanceSubscriptionVariables = {
-  filter?: ModelSubscriptionMealInstanceFilterInput | null,
+export type OnCreateMealHistorySubscriptionVariables = {
+  filter?: ModelSubscriptionMealHistoryFilterInput | null,
 };
 
-export type OnCreateMealInstanceSubscription = {
-  onCreateMealInstance?:  {
-    __typename: "MealInstance",
+export type OnCreateMealHistorySubscription = {
+  onCreateMealHistory?:  {
+    __typename: "MealHistory",
     id: string,
+    confirmed?: boolean | null,
     createdAt: string,
     updatedAt: string,
-    mealInstancesId?: string | null,
+    mealHistoryId?: string | null,
   } | null,
 };
 
-export type OnUpdateMealInstanceSubscriptionVariables = {
-  filter?: ModelSubscriptionMealInstanceFilterInput | null,
+export type OnUpdateMealHistorySubscriptionVariables = {
+  filter?: ModelSubscriptionMealHistoryFilterInput | null,
 };
 
-export type OnUpdateMealInstanceSubscription = {
-  onUpdateMealInstance?:  {
-    __typename: "MealInstance",
+export type OnUpdateMealHistorySubscription = {
+  onUpdateMealHistory?:  {
+    __typename: "MealHistory",
     id: string,
+    confirmed?: boolean | null,
     createdAt: string,
     updatedAt: string,
-    mealInstancesId?: string | null,
+    mealHistoryId?: string | null,
   } | null,
 };
 
-export type OnDeleteMealInstanceSubscriptionVariables = {
-  filter?: ModelSubscriptionMealInstanceFilterInput | null,
+export type OnDeleteMealHistorySubscriptionVariables = {
+  filter?: ModelSubscriptionMealHistoryFilterInput | null,
 };
 
-export type OnDeleteMealInstanceSubscription = {
-  onDeleteMealInstance?:  {
-    __typename: "MealInstance",
+export type OnDeleteMealHistorySubscription = {
+  onDeleteMealHistory?:  {
+    __typename: "MealHistory",
     id: string,
+    confirmed?: boolean | null,
     createdAt: string,
     updatedAt: string,
-    mealInstancesId?: string | null,
+    mealHistoryId?: string | null,
   } | null,
 };
