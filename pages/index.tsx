@@ -15,12 +15,13 @@ import {
   View,
   withAuthenticator,
 } from "@aws-amplify/ui-react";
-import { API, graphqlOperation, withSSRContext } from "aws-amplify";
+import { API, graphqlOperation } from "aws-amplify";
 import { useEffect, useState } from "react";
 import { createMeal, deleteMeal } from "../src/graphql/mutations";
 import { listMeals } from "../src/graphql/queries";
 import { onCreateMeal } from "../src/graphql/subscriptions";
 
+/*
 export async function getServerSideProps({ req }) {
   const SSR = withSSRContext({ req });
   const response = await SSR.API.graphql({ query: listMeals });
@@ -31,10 +32,11 @@ export async function getServerSideProps({ req }) {
     },
   };
 }
+*/
 
-const Home: NextPage = (serverMeals) => {
+const Home: NextPage = () => {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
-  const [meals, setMeals] = useState(serverMeals || []);
+  const [meals, setMeals] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setContent] = useState("");
 
@@ -97,6 +99,8 @@ const Home: NextPage = (serverMeals) => {
     <View padding="2rem">
       <Flex direction={"row"}>
         <Heading level={2}>Admin</Heading>
+      </Flex>
+      <Flex direction={"row"}>
         <Heading level={4}>Welcome {user.attributes?.email}</Heading>
         <Button type="button" onClick={signOut}>
           Sign out
