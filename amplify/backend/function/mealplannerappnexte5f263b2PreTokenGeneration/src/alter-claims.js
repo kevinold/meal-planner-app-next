@@ -28,11 +28,20 @@ const query = `query GetUserGroup(
   }
 }`;
 */
-const query = `query GetUserGroup
- ($ownerId: ID!) {
-  listUserGroups(filter: {or: {owners: {contains: $ownerId }}}) {
+/*const query = `query GetUserGroup
+ ($ownerId: String = "") {
+  listUserGroups(filter: {owners: {contains: $ownerId }}) {
     items {
       id
+    }
+  }
+}`;*/
+
+const query = `query GetUserGroups {
+  listUserGroups {
+    items {
+      id
+      owners
     }
   }
 }`;
