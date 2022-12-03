@@ -22,7 +22,7 @@
       "function": {
         "mealplannerappnexte5f263b2PreTokenGeneration": {
           "deploymentBucketName": "amplify-mealplannerappnext-dev-173646-deployment",
-          "s3Key": "amplify-builds/mealplannerappnexte5f263b2PreTokenGeneration-5746325a3173336d764a-build.zip"
+          "s3Key": "amplify-builds/mealplannerappnexte5f263b2PreTokenGeneration-5162615759687371616f-build.zip"
         }
       }
     }

@@ -24,9 +24,9 @@ type MealUserGroup
     ]
   ) {
   id: ID!
-  owner: String!
+  owner: String! @index(name: "byOwner", queryField: "mealUserGroupByOwner")
   inviteCode: String!
-  joinedGroup: ID!
+  joinedGroup: ID
 }
 
 type Meal
