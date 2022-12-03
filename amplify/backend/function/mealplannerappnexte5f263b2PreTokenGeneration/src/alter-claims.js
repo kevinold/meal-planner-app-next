@@ -11,42 +11,15 @@ const GRAPHQL_ENDPOINT =
   process.env.API_MEALPLANNERAPPNEXT_GRAPHQLAPIENDPOINTOUTPUT;
 const AWS_REGION = process.env.AWS_REGION || "us-east-2";
 
-/*
-const query = `query GetUserGroup(
-  $id: ID!
-) {
-  getUser(id: $id) {
-    role
-    business {
-      id
-      locations(limit: 100) {
-        items {
-          id
-        }
-      }
-    }
-  }
-}`;
-*/
-/*const query = `query GetUserGroup
- ($ownerId: String = "") {
-  listUserGroups(filter: {owners: {contains: $ownerId }}) {
-    items {
-      id
-    }
-  }
-}`;*/
-
-const query = `query GetUserGroups {
-  listUserGroups {
-    items {
-      id
-      owners
-    }
+const query = `query MealUserGroupByOwner
+ ($owner: String = "") {
+  mealUserGroupByOwner(owner: $owner) {
+    id
   }
 }`;
 
 /**
+ *
  * @type {import('@types/aws-lambda').PreTokenGenerationTriggerHandler}
  */
 exports.handler = async (event) => {
@@ -73,7 +46,7 @@ exports.handler = async (event) => {
       host: endpoint.host,
     },
     hostname: endpoint.host,
-    body: JSON.stringify({ query, variables: { ownerId: userSub } }),
+    body: JSON.stringify({ query, variables: { owner: userSub } }),
     path: endpoint.pathname,
   });
 
@@ -99,18 +72,19 @@ exports.handler = async (event) => {
     };
   }
 
+  console.log("data", body);
+
   // body...
   // Return if no user is found in DB, handle this case
-  if (!body.data.listUserGroups) return event;
+  if (!body.data.mealUserGroupByOwner) return event;
 
-  console.log("data", body.data.listUserGroups);
+  console.log("data", body.data.mealUserGroupByOwner);
 
-  const claimsToAddOrOverride = {};
-  const customGroups = [];
-
-  body.data.listUserGroups?.items.forEach((item) => {
-    customGroups.push(item.location.id);
-  });
+  const groupId = body.data.mealUserGroupByOwner.items[0].id;
+  const claimsToAddOrOverride = {
+    mealUserGroup: groupId,
+  };
+  const customGroups = [groupId];
 
   event.response = {
     claimsOverrideDetails: {

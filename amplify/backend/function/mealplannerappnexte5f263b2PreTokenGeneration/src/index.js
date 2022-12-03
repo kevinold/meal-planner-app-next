@@ -3,7 +3,7 @@
 	API_MEALPLANNERAPPNEXT_GRAPHQLAPIIDOUTPUT
 	ENV
 	REGION
-Amplify Params - DO NOT EDIT *//**
+Amplify Params - DO NOT EDIT */ /**
  * @fileoverview
  *
  * This CloudFormation Trigger creates a handler which awaits the other handlers
@@ -14,18 +14,18 @@ Amplify Params - DO NOT EDIT *//**
  * The names of modules to load are stored as a comma-delimited string in the
  * `MODULES` env var.
  */
-const moduleNames = process.env.MODULES.split(',');
+const moduleNames = process.env.MODULES.split(",");
 /**
  * The array of imported modules.
  */
-const modules = moduleNames.map(name => require(`./${name}`));
+const modules = moduleNames.map((name) => require(`./${name}`));
 
 /**
  * This async handler iterates over the given modules and awaits them.
  *
  * @see https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
- * 
+ *
  */
 exports.handler = async (event, context) => {
   /**
@@ -33,6 +33,6 @@ exports.handler = async (event, context) => {
    * `await Promise.all(...)`. This would otherwise just be determined by the
    * order of names in the `MODULES` var.
    */
-  await Promise.all(modules.map(module => module.handler(event, context)));
+  await Promise.all(modules.map((module) => module.handler(event, context)));
   return event;
 };
