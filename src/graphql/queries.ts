@@ -33,33 +33,6 @@ export const listMealUserGroups = /* GraphQL */ `
     }
   }
 `;
-export const mealUserGroupByOwner = /* GraphQL */ `
-  query MealUserGroupByOwner(
-    $owner: String!
-    $sortDirection: ModelSortDirection
-    $filter: ModelMealUserGroupFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    mealUserGroupByOwner(
-      owner: $owner
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        owner
-        inviteCode
-        joinedGroup
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
 export const getMeal = /* GraphQL */ `
   query GetMeal($id: ID!) {
     getMeal(id: $id) {
@@ -140,6 +113,18 @@ export const listMealHistories = /* GraphQL */ `
         mealHistoryId
       }
       nextToken
+    }
+  }
+`;
+export const getMealUserGroupByOwner = /* GraphQL */ `
+  query GetMealUserGroupByOwner($owner: String!) {
+    getMealUserGroupByOwner(owner: $owner) {
+      id
+      owner
+      inviteCode
+      joinedGroup
+      createdAt
+      updatedAt
     }
   }
 `;

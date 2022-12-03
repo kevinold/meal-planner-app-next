@@ -13,7 +13,7 @@ const AWS_REGION = process.env.AWS_REGION || "us-east-2";
 
 const query = `query MealUserGroupByOwner
  ($owner: String = "") {
-  mealUserGroupByOwner(owner: $owner) {
+  getMealUserGroupByOwner(owner: $owner) {
     id
   }
 }`;
@@ -76,11 +76,11 @@ exports.handler = async (event) => {
 
   // body...
   // Return if no user is found in DB, handle this case
-  if (!body.data.mealUserGroupByOwner) return event;
+  if (!body.data.getMealUserGroupByOwner) return event;
 
-  console.log("data", body.data.mealUserGroupByOwner);
+  console.log("data", body.data.getMealUserGroupByOwner);
 
-  const groupId = body.data.mealUserGroupByOwner.items[0].id;
+  const groupId = body.data.getMealUserGroupByOwner.id;
   const claimsToAddOrOverride = {
     mealUserGroup: groupId,
   };

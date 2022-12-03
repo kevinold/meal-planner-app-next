@@ -240,12 +240,6 @@ export type ModelMealUserGroupConnection = {
   nextToken?: string | null,
 };
 
-export enum ModelSortDirection {
-  ASC = "ASC",
-  DESC = "DESC",
-}
-
-
 export type ModelMealFilterInput = {
   id?: ModelIDInput | null,
   title?: ModelStringInput | null,
@@ -576,30 +570,6 @@ export type ListMealUserGroupsQuery = {
   } | null,
 };
 
-export type MealUserGroupByOwnerQueryVariables = {
-  owner: string,
-  sortDirection?: ModelSortDirection | null,
-  filter?: ModelMealUserGroupFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type MealUserGroupByOwnerQuery = {
-  mealUserGroupByOwner?:  {
-    __typename: "ModelMealUserGroupConnection",
-    items:  Array< {
-      __typename: "MealUserGroup",
-      id: string,
-      owner: string,
-      inviteCode: string,
-      joinedGroup?: string | null,
-      createdAt: string,
-      updatedAt: string,
-    } | null >,
-    nextToken?: string | null,
-  } | null,
-};
-
 export type GetMealQueryVariables = {
   id: string,
 };
@@ -697,6 +667,22 @@ export type ListMealHistoriesQuery = {
       mealHistoryId?: string | null,
     } | null >,
     nextToken?: string | null,
+  } | null,
+};
+
+export type GetMealUserGroupByOwnerQueryVariables = {
+  owner: string,
+};
+
+export type GetMealUserGroupByOwnerQuery = {
+  getMealUserGroupByOwner?:  {
+    __typename: "MealUserGroup",
+    id: string,
+    owner: string,
+    inviteCode: string,
+    joinedGroup?: string | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
