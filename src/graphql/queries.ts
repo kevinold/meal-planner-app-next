@@ -2,28 +2,30 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getUserGroup = /* GraphQL */ `
-  query GetUserGroup($id: ID!) {
-    getUserGroup(id: $id) {
+export const getMealUserGroup = /* GraphQL */ `
+  query GetMealUserGroup($id: ID!) {
+    getMealUserGroup(id: $id) {
       id
-      name
-      owners
+      owner
+      inviteCode
+      joinedGroup
       createdAt
       updatedAt
     }
   }
 `;
-export const listUserGroups = /* GraphQL */ `
-  query ListUserGroups(
-    $filter: ModelUserGroupFilterInput
+export const listMealUserGroups = /* GraphQL */ `
+  query ListMealUserGroups(
+    $filter: ModelMealUserGroupFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listUserGroups(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listMealUserGroups(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        name
-        owners
+        owner
+        inviteCode
+        joinedGroup
         createdAt
         updatedAt
       }

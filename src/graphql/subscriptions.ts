@@ -2,40 +2,46 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateUserGroup = /* GraphQL */ `
-  subscription OnCreateUserGroup(
-    $filter: ModelSubscriptionUserGroupFilterInput
+export const onCreateMealUserGroup = /* GraphQL */ `
+  subscription OnCreateMealUserGroup(
+    $filter: ModelSubscriptionMealUserGroupFilterInput
+    $owner: String
   ) {
-    onCreateUserGroup(filter: $filter) {
+    onCreateMealUserGroup(filter: $filter, owner: $owner) {
       id
-      name
-      owners
+      owner
+      inviteCode
+      joinedGroup
       createdAt
       updatedAt
     }
   }
 `;
-export const onUpdateUserGroup = /* GraphQL */ `
-  subscription OnUpdateUserGroup(
-    $filter: ModelSubscriptionUserGroupFilterInput
+export const onUpdateMealUserGroup = /* GraphQL */ `
+  subscription OnUpdateMealUserGroup(
+    $filter: ModelSubscriptionMealUserGroupFilterInput
+    $owner: String
   ) {
-    onUpdateUserGroup(filter: $filter) {
+    onUpdateMealUserGroup(filter: $filter, owner: $owner) {
       id
-      name
-      owners
+      owner
+      inviteCode
+      joinedGroup
       createdAt
       updatedAt
     }
   }
 `;
-export const onDeleteUserGroup = /* GraphQL */ `
-  subscription OnDeleteUserGroup(
-    $filter: ModelSubscriptionUserGroupFilterInput
+export const onDeleteMealUserGroup = /* GraphQL */ `
+  subscription OnDeleteMealUserGroup(
+    $filter: ModelSubscriptionMealUserGroupFilterInput
+    $owner: String
   ) {
-    onDeleteUserGroup(filter: $filter) {
+    onDeleteMealUserGroup(filter: $filter, owner: $owner) {
       id
-      name
-      owners
+      owner
+      inviteCode
+      joinedGroup
       createdAt
       updatedAt
     }

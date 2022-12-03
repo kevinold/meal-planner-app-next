@@ -2,43 +2,46 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createUserGroup = /* GraphQL */ `
-  mutation CreateUserGroup(
-    $input: CreateUserGroupInput!
-    $condition: ModelUserGroupConditionInput
+export const createMealUserGroup = /* GraphQL */ `
+  mutation CreateMealUserGroup(
+    $input: CreateMealUserGroupInput!
+    $condition: ModelMealUserGroupConditionInput
   ) {
-    createUserGroup(input: $input, condition: $condition) {
+    createMealUserGroup(input: $input, condition: $condition) {
       id
-      name
-      owners
+      owner
+      inviteCode
+      joinedGroup
       createdAt
       updatedAt
     }
   }
 `;
-export const updateUserGroup = /* GraphQL */ `
-  mutation UpdateUserGroup(
-    $input: UpdateUserGroupInput!
-    $condition: ModelUserGroupConditionInput
+export const updateMealUserGroup = /* GraphQL */ `
+  mutation UpdateMealUserGroup(
+    $input: UpdateMealUserGroupInput!
+    $condition: ModelMealUserGroupConditionInput
   ) {
-    updateUserGroup(input: $input, condition: $condition) {
+    updateMealUserGroup(input: $input, condition: $condition) {
       id
-      name
-      owners
+      owner
+      inviteCode
+      joinedGroup
       createdAt
       updatedAt
     }
   }
 `;
-export const deleteUserGroup = /* GraphQL */ `
-  mutation DeleteUserGroup(
-    $input: DeleteUserGroupInput!
-    $condition: ModelUserGroupConditionInput
+export const deleteMealUserGroup = /* GraphQL */ `
+  mutation DeleteMealUserGroup(
+    $input: DeleteMealUserGroupInput!
+    $condition: ModelMealUserGroupConditionInput
   ) {
-    deleteUserGroup(input: $input, condition: $condition) {
+    deleteMealUserGroup(input: $input, condition: $condition) {
       id
-      name
-      owners
+      owner
+      inviteCode
+      joinedGroup
       createdAt
       updatedAt
     }
