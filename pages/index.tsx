@@ -18,7 +18,7 @@ import {
 import { API, graphqlOperation } from "aws-amplify";
 import { useEffect, useState } from "react";
 import { createMeal, deleteMeal } from "../src/graphql/mutations";
-import { listMeals, listUserGroups } from "../src/graphql/queries";
+import { listMeals, mealUserGroupByOwner } from "../src/graphql/queries";
 import { onCreateMeal } from "../src/graphql/subscriptions";
 
 /*
@@ -99,10 +99,13 @@ const Home: NextPage = () => {
   async function getUserGroup() {
     try {
       const { data } = await API.graphql({
-        query: listUserGroups,
+        query: mealUserGroupByOwner,
+        variables: {
+          owner: user.attributes.sub,
+        },
       });
 
-      setUserGroup(data.listUserGroups?.items[0].id);
+      setUserGroup(data.mealUserGroupByOwner?.items[0].id);
     } catch ({ errors }) {
       console.error(errors);
       //console.error(...errors);
