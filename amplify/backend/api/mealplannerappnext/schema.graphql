@@ -64,7 +64,7 @@ input JoinMealUserGroupInput {
 }
 
 type Mutation {
-  joinMealUserGroup(input: JoinMealUserGroupInput): MealUserGroup
+  joinMealUserGroup(input: JoinMealUserGroupInput): String
     @function(name: "joinMealUserGroupFunc-${env}")
     @auth(rules: [{ allow: private }])
 }

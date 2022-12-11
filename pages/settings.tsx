@@ -20,6 +20,7 @@ const Settings: NextPage = () => {
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const result = await API.graphql({
+      authMode: "AMAZON_COGNITO_USER_POOLS", // must have this here!
       query: joinMealUserGroup,
       variables: {
         input: {

@@ -27,7 +27,7 @@
         "joinUserGroupFunc": {},
         "joinMealUserGroupFunc": {
           "deploymentBucketName": "amplify-mealplannerappnext-dev-173646-deployment",
-          "s3Key": "amplify-builds/joinMealUserGroupFunc-7a467037747367335a33-build.zip"
+          "s3Key": "amplify-builds/joinMealUserGroupFunc-62467a6b6f3968325672-build.zip"
         }
       }
     }

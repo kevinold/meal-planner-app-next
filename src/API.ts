@@ -548,15 +548,7 @@ export type JoinMealUserGroupMutationVariables = {
 };
 
 export type JoinMealUserGroupMutation = {
-  joinMealUserGroup?:  {
-    __typename: "MealUserGroup",
-    id: string,
-    owner: string,
-    inviteCode: string,
-    joinedGroup?: string | null,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
+  joinMealUserGroup?: string | null,
 };
 
 export type GetMealUserGroupQueryVariables = {

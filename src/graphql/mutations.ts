@@ -181,13 +181,6 @@ export const deleteMealHistory = /* GraphQL */ `
 `;
 export const joinMealUserGroup = /* GraphQL */ `
   mutation JoinMealUserGroup($input: JoinMealUserGroupInput) {
-    joinMealUserGroup(input: $input) {
-      id
-      owner
-      inviteCode
-      joinedGroup
-      createdAt
-      updatedAt
-    }
+    joinMealUserGroup(input: $input)
   }
 `;
