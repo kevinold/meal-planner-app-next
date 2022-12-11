@@ -10,6 +10,7 @@ export type AmplifyDependentResourcesAttributes = {
     },
     "api": {
         "mealplannerappnext": {
+            "GraphQLAPIKeyOutput": "string",
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"
         }

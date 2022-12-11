@@ -34,7 +34,7 @@
     "sharedId": "e5f263b2",
     "resourceName": "mealplannerappnexte5f263b2",
     "authSelections": "userPoolOnly",
-    "useDefault": "manual",
+    "useDefault": "default",
     "usernameAttributes": [
       "email"
     ],
@@ -74,11 +74,11 @@
       ]
     },
     "hostedUI": false,
-    "authProviders": [],
     "parentStack": {
       "Ref": "AWS::StackId"
     },
     "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PreTokenGeneration\",\n    \"lambdaFunctionName\": \"mealplannerappnexte5f263b2PreTokenGeneration\"\n  }\n]",
-    "permissions": []
+    "permissions": [],
+    "authProviders": []
   }
 }
