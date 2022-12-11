@@ -47,7 +47,7 @@ const updateMealUserGroup = /* GraphQL */ `
  */
 export const handler = async (event) => {
   console.log(`EVENT: ${JSON.stringify(event)}`);
-  const { userId, inviteCode } = event.arguments;
+  const { userId, inviteCode } = event.arguments.input;
 
   let userGroup;
   let userGroupId;
