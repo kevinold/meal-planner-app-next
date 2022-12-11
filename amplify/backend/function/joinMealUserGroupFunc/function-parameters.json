@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "auth": {
+      "mealplannerappnexte5f263b2": [
+        "read",
+        "update"
+      ]
+    },
+    "api": {
+      "mealplannerappnext": [
+        "Query",
+        "Mutation"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
