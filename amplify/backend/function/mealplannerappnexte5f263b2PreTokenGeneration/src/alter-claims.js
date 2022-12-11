@@ -82,7 +82,10 @@ exports.handler = async (event) => {
 
   console.log("data", body.data.mealUserGroupByOwner);
 
-  const groupId = body.data.mealUserGroupByOwner.items[0].id;
+  let groupId;
+  if (body.data.mealUserGroupByOwner.items) {
+    groupId = body.data.mealUserGroupByOwner.items[0].id;
+  }
   const claimsToAddOrOverride = {
     mealUserGroup: groupId,
   };
