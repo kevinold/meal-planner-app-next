@@ -5,11 +5,10 @@
 export const onCreateMealUserGroup = /* GraphQL */ `
   subscription OnCreateMealUserGroup(
     $filter: ModelSubscriptionMealUserGroupFilterInput
-    $owner: String
   ) {
-    onCreateMealUserGroup(filter: $filter, owner: $owner) {
+    onCreateMealUserGroup(filter: $filter) {
       id
-      owner
+      owners
       inviteCode
       members
       createdAt
@@ -20,11 +19,10 @@ export const onCreateMealUserGroup = /* GraphQL */ `
 export const onUpdateMealUserGroup = /* GraphQL */ `
   subscription OnUpdateMealUserGroup(
     $filter: ModelSubscriptionMealUserGroupFilterInput
-    $owner: String
   ) {
-    onUpdateMealUserGroup(filter: $filter, owner: $owner) {
+    onUpdateMealUserGroup(filter: $filter) {
       id
-      owner
+      owners
       inviteCode
       members
       createdAt
@@ -35,11 +33,10 @@ export const onUpdateMealUserGroup = /* GraphQL */ `
 export const onDeleteMealUserGroup = /* GraphQL */ `
   subscription OnDeleteMealUserGroup(
     $filter: ModelSubscriptionMealUserGroupFilterInput
-    $owner: String
   ) {
-    onDeleteMealUserGroup(filter: $filter, owner: $owner) {
+    onDeleteMealUserGroup(filter: $filter) {
       id
-      owner
+      owners
       inviteCode
       members
       createdAt

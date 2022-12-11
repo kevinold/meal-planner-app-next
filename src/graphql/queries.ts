@@ -6,7 +6,7 @@ export const getMealUserGroup = /* GraphQL */ `
   query GetMealUserGroup($id: ID!) {
     getMealUserGroup(id: $id) {
       id
-      owner
+      owners
       inviteCode
       members
       createdAt
@@ -23,34 +23,7 @@ export const listMealUserGroups = /* GraphQL */ `
     listMealUserGroups(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        owner
-        inviteCode
-        members
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const mealUserGroupByOwner = /* GraphQL */ `
-  query MealUserGroupByOwner(
-    $owner: String!
-    $sortDirection: ModelSortDirection
-    $filter: ModelMealUserGroupFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    mealUserGroupByOwner(
-      owner: $owner
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        owner
+        owners
         inviteCode
         members
         createdAt
@@ -77,7 +50,7 @@ export const mealUserGroupByInviteCode = /* GraphQL */ `
     ) {
       items {
         id
-        owner
+        owners
         inviteCode
         members
         createdAt
@@ -174,7 +147,7 @@ export const getMealUserGroupByOwner = /* GraphQL */ `
   query GetMealUserGroupByOwner($owner: String!) {
     getMealUserGroupByOwner(owner: $owner) {
       id
-      owner
+      owners
       inviteCode
       members
       createdAt

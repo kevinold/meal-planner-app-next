@@ -18,14 +18,14 @@ type MealUserGroup
   @model
   @auth(
     rules: [
-      { allow: owner }
+      { allow: owner, ownerField: "owners" }
       # https://docs.amplify.aws/guides/functions/graphql-from-lambda/q/platform/js/#iam-authorization
       { allow: private, provider: iam }
       { allow: public }
     ]
   ) {
   id: ID!
-  owner: String! @index(name: "byOwner", queryField: "mealUserGroupByOwner")
+  owners: [String!]
   inviteCode: String!
     @index(name: "byInviteCode", queryField: "mealUserGroupByInviteCode")
   members: ID

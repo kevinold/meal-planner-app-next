@@ -4,13 +4,13 @@
 
 export type CreateMealUserGroupInput = {
   id?: string | null,
-  owner: string,
+  owners?: Array< string > | null,
   inviteCode: string,
   members?: string | null,
 };
 
 export type ModelMealUserGroupConditionInput = {
-  owner?: ModelStringInput | null,
+  owners?: ModelStringInput | null,
   inviteCode?: ModelStringInput | null,
   members?: ModelIDInput | null,
   and?: Array< ModelMealUserGroupConditionInput | null > | null,
@@ -77,7 +77,7 @@ export type ModelIDInput = {
 export type MealUserGroup = {
   __typename: "MealUserGroup",
   id: string,
-  owner: string,
+  owners?: Array< string > | null,
   inviteCode: string,
   members?: string | null,
   createdAt: string,
@@ -86,7 +86,7 @@ export type MealUserGroup = {
 
 export type UpdateMealUserGroupInput = {
   id: string,
-  owner?: string | null,
+  owners?: Array< string > | null,
   inviteCode?: string | null,
   members?: string | null,
 };
@@ -231,7 +231,7 @@ export type JoinMealUserGroupInput = {
 
 export type ModelMealUserGroupFilterInput = {
   id?: ModelIDInput | null,
-  owner?: ModelStringInput | null,
+  owners?: ModelStringInput | null,
   inviteCode?: ModelStringInput | null,
   members?: ModelIDInput | null,
   and?: Array< ModelMealUserGroupFilterInput | null > | null,
@@ -351,7 +351,7 @@ export type CreateMealUserGroupMutation = {
   createMealUserGroup?:  {
     __typename: "MealUserGroup",
     id: string,
-    owner: string,
+    owners?: Array< string > | null,
     inviteCode: string,
     members?: string | null,
     createdAt: string,
@@ -368,7 +368,7 @@ export type UpdateMealUserGroupMutation = {
   updateMealUserGroup?:  {
     __typename: "MealUserGroup",
     id: string,
-    owner: string,
+    owners?: Array< string > | null,
     inviteCode: string,
     members?: string | null,
     createdAt: string,
@@ -385,7 +385,7 @@ export type DeleteMealUserGroupMutation = {
   deleteMealUserGroup?:  {
     __typename: "MealUserGroup",
     id: string,
-    owner: string,
+    owners?: Array< string > | null,
     inviteCode: string,
     members?: string | null,
     createdAt: string,
@@ -559,7 +559,7 @@ export type GetMealUserGroupQuery = {
   getMealUserGroup?:  {
     __typename: "MealUserGroup",
     id: string,
-    owner: string,
+    owners?: Array< string > | null,
     inviteCode: string,
     members?: string | null,
     createdAt: string,
@@ -579,31 +579,7 @@ export type ListMealUserGroupsQuery = {
     items:  Array< {
       __typename: "MealUserGroup",
       id: string,
-      owner: string,
-      inviteCode: string,
-      members?: string | null,
-      createdAt: string,
-      updatedAt: string,
-    } | null >,
-    nextToken?: string | null,
-  } | null,
-};
-
-export type MealUserGroupByOwnerQueryVariables = {
-  owner: string,
-  sortDirection?: ModelSortDirection | null,
-  filter?: ModelMealUserGroupFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type MealUserGroupByOwnerQuery = {
-  mealUserGroupByOwner?:  {
-    __typename: "ModelMealUserGroupConnection",
-    items:  Array< {
-      __typename: "MealUserGroup",
-      id: string,
-      owner: string,
+      owners?: Array< string > | null,
       inviteCode: string,
       members?: string | null,
       createdAt: string,
@@ -627,7 +603,7 @@ export type MealUserGroupByInviteCodeQuery = {
     items:  Array< {
       __typename: "MealUserGroup",
       id: string,
-      owner: string,
+      owners?: Array< string > | null,
       inviteCode: string,
       members?: string | null,
       createdAt: string,
@@ -745,7 +721,7 @@ export type GetMealUserGroupByOwnerQuery = {
   getMealUserGroupByOwner?:  {
     __typename: "MealUserGroup",
     id: string,
-    owner: string,
+    owners?: Array< string > | null,
     inviteCode: string,
     members?: string | null,
     createdAt: string,
@@ -755,14 +731,13 @@ export type GetMealUserGroupByOwnerQuery = {
 
 export type OnCreateMealUserGroupSubscriptionVariables = {
   filter?: ModelSubscriptionMealUserGroupFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnCreateMealUserGroupSubscription = {
   onCreateMealUserGroup?:  {
     __typename: "MealUserGroup",
     id: string,
-    owner: string,
+    owners?: Array< string > | null,
     inviteCode: string,
     members?: string | null,
     createdAt: string,
@@ -772,14 +747,13 @@ export type OnCreateMealUserGroupSubscription = {
 
 export type OnUpdateMealUserGroupSubscriptionVariables = {
   filter?: ModelSubscriptionMealUserGroupFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnUpdateMealUserGroupSubscription = {
   onUpdateMealUserGroup?:  {
     __typename: "MealUserGroup",
     id: string,
-    owner: string,
+    owners?: Array< string > | null,
     inviteCode: string,
     members?: string | null,
     createdAt: string,
@@ -789,14 +763,13 @@ export type OnUpdateMealUserGroupSubscription = {
 
 export type OnDeleteMealUserGroupSubscriptionVariables = {
   filter?: ModelSubscriptionMealUserGroupFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnDeleteMealUserGroupSubscription = {
   onDeleteMealUserGroup?:  {
     __typename: "MealUserGroup",
     id: string,
-    owner: string,
+    owners?: Array< string > | null,
     inviteCode: string,
     members?: string | null,
     createdAt: string,

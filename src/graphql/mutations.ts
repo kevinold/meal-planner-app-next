@@ -9,7 +9,7 @@ export const createMealUserGroup = /* GraphQL */ `
   ) {
     createMealUserGroup(input: $input, condition: $condition) {
       id
-      owner
+      owners
       inviteCode
       members
       createdAt
@@ -24,7 +24,7 @@ export const updateMealUserGroup = /* GraphQL */ `
   ) {
     updateMealUserGroup(input: $input, condition: $condition) {
       id
-      owner
+      owners
       inviteCode
       members
       createdAt
@@ -39,7 +39,7 @@ export const deleteMealUserGroup = /* GraphQL */ `
   ) {
     deleteMealUserGroup(input: $input, condition: $condition) {
       id
-      owner
+      owners
       inviteCode
       members
       createdAt
