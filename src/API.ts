@@ -2,21 +2,6 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type JoinMealUserGroupInput = {
-  userId: string,
-  inviteCode: string,
-};
-
-export type MealUserGroup = {
-  __typename: "MealUserGroup",
-  id: string,
-  owner: string,
-  inviteCode: string,
-  joinedGroup?: string | null,
-  createdAt: string,
-  updatedAt: string,
-};
-
 export type CreateMealUserGroupInput = {
   id?: string | null,
   owner: string,
@@ -87,6 +72,16 @@ export type ModelIDInput = {
   attributeExists?: boolean | null,
   attributeType?: ModelAttributeTypes | null,
   size?: ModelSizeInput | null,
+};
+
+export type MealUserGroup = {
+  __typename: "MealUserGroup",
+  id: string,
+  owner: string,
+  inviteCode: string,
+  joinedGroup?: string | null,
+  createdAt: string,
+  updatedAt: string,
 };
 
 export type UpdateMealUserGroupInput = {
@@ -229,6 +224,11 @@ export type DeleteMealHistoryInput = {
   id: string,
 };
 
+export type JoinMealUserGroupInput = {
+  userId: string,
+  inviteCode: string,
+};
+
 export type ModelMealUserGroupFilterInput = {
   id?: ModelIDInput | null,
   owner?: ModelStringInput | null,
@@ -340,22 +340,6 @@ export type ModelSubscriptionMealHistoryFilterInput = {
 export type ModelSubscriptionBooleanInput = {
   ne?: boolean | null,
   eq?: boolean | null,
-};
-
-export type JoinMealUserGroupMutationVariables = {
-  input?: JoinMealUserGroupInput | null,
-};
-
-export type JoinMealUserGroupMutation = {
-  joinMealUserGroup?:  {
-    __typename: "MealUserGroup",
-    id: string,
-    owner: string,
-    inviteCode: string,
-    joinedGroup?: string | null,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
 };
 
 export type CreateMealUserGroupMutationVariables = {
@@ -556,6 +540,22 @@ export type DeleteMealHistoryMutation = {
     createdAt: string,
     updatedAt: string,
     mealHistoryId?: string | null,
+  } | null,
+};
+
+export type JoinMealUserGroupMutationVariables = {
+  input?: JoinMealUserGroupInput | null,
+};
+
+export type JoinMealUserGroupMutation = {
+  joinMealUserGroup?:  {
+    __typename: "MealUserGroup",
+    id: string,
+    owner: string,
+    inviteCode: string,
+    joinedGroup?: string | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 

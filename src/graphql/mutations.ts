@@ -2,18 +2,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const joinMealUserGroup = /* GraphQL */ `
-  mutation JoinMealUserGroup($input: JoinMealUserGroupInput) {
-    joinMealUserGroup(input: $input) {
-      id
-      owner
-      inviteCode
-      joinedGroup
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const createMealUserGroup = /* GraphQL */ `
   mutation CreateMealUserGroup(
     $input: CreateMealUserGroupInput!
@@ -188,6 +176,18 @@ export const deleteMealHistory = /* GraphQL */ `
       createdAt
       updatedAt
       mealHistoryId
+    }
+  }
+`;
+export const joinMealUserGroup = /* GraphQL */ `
+  mutation JoinMealUserGroup($input: JoinMealUserGroupInput) {
+    joinMealUserGroup(input: $input) {
+      id
+      owner
+      inviteCode
+      joinedGroup
+      createdAt
+      updatedAt
     }
   }
 `;
