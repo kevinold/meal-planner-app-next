@@ -60,6 +60,33 @@ export const mealUserGroupByOwner = /* GraphQL */ `
     }
   }
 `;
+export const mealUserGroupByInviteCode = /* GraphQL */ `
+  query MealUserGroupByInviteCode(
+    $inviteCode: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelMealUserGroupFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    mealUserGroupByInviteCode(
+      inviteCode: $inviteCode
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        owner
+        inviteCode
+        joinedGroup
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getMeal = /* GraphQL */ `
   query GetMeal($id: ID!) {
     getMeal(id: $id) {
