@@ -8,7 +8,7 @@ export const getMealUserGroup = /* GraphQL */ `
       id
       owner
       inviteCode
-      joinedGroup
+      members
       createdAt
       updatedAt
     }
@@ -25,7 +25,7 @@ export const listMealUserGroups = /* GraphQL */ `
         id
         owner
         inviteCode
-        joinedGroup
+        members
         createdAt
         updatedAt
       }
@@ -52,7 +52,7 @@ export const mealUserGroupByOwner = /* GraphQL */ `
         id
         owner
         inviteCode
-        joinedGroup
+        members
         createdAt
         updatedAt
       }
@@ -79,7 +79,7 @@ export const mealUserGroupByInviteCode = /* GraphQL */ `
         id
         owner
         inviteCode
-        joinedGroup
+        members
         createdAt
         updatedAt
       }
@@ -176,7 +176,7 @@ export const getMealUserGroupByOwner = /* GraphQL */ `
       id
       owner
       inviteCode
-      joinedGroup
+      members
       createdAt
       updatedAt
     }

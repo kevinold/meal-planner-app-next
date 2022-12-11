@@ -11,7 +11,7 @@ export const onCreateMealUserGroup = /* GraphQL */ `
       id
       owner
       inviteCode
-      joinedGroup
+      members
       createdAt
       updatedAt
     }
@@ -26,7 +26,7 @@ export const onUpdateMealUserGroup = /* GraphQL */ `
       id
       owner
       inviteCode
-      joinedGroup
+      members
       createdAt
       updatedAt
     }
@@ -41,7 +41,7 @@ export const onDeleteMealUserGroup = /* GraphQL */ `
       id
       owner
       inviteCode
-      joinedGroup
+      members
       createdAt
       updatedAt
     }

@@ -27,7 +27,7 @@ type MealUserGroup
   owner: String! @index(name: "byOwner", queryField: "mealUserGroupByOwner")
   inviteCode: String!
     @index(name: "byInviteCode", queryField: "mealUserGroupByInviteCode")
-  joinedGroup: ID
+  members: ID
 }
 
 type Meal
