@@ -1,5 +1,5 @@
 // @ts-nocheck
-import Auth from "@aws-amplify/auth";
+import { Auth } from "aws-amplify";
 import AWS from "aws-sdk";
 import crypto from "crypto";
 import dotenv from "dotenv";
