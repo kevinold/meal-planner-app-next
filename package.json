@@ -10,9 +10,9 @@
     "test:provisionCognitoUsers": "npm run tsnode scripts/provisionCognitoUsers.ts"
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^3.6.0",
+    "@aws-amplify/ui-react": "^4.2.1",
     "@tailwindcss/forms": "^0.5.3",
-    "aws-amplify": "^4.3.43",
+    "aws-amplify": "^5.0.7",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -24,7 +24,6 @@
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "autoprefixer": "^10.4.12",
-    "aws-sdk": "^2.1267.0",
     "cypress": "^11.2.0",
     "dotenv": "^16.0.3",
     "eslint-config-prettier": "^8.5.0",
