@@ -11,5 +11,9 @@ declare namespace Cypress {
      * Logs-in user by using Amplify Authenticator tied to Cognito
      */
     loginWithCognitoUI(username: string, password: string): void;
+    /**
+     * Sign a user up by using Amplify Authenticator tied to Cognito
+     */
+    signUpWithCognitoUI(username: string, password: string): void;
   }
 }

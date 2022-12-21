@@ -1,10 +1,13 @@
 Cypress.Commands.add("loginWithCognitoUI", (username, password) => {
-  cy.intercept("POST", "https://cognito-idp.*.amazonaws.com/**").as("loginPost");
+  cy.intercept("POST", "https://cognito-idp.*.amazonaws.com/**").as(
+    "loginPost"
+  );
   cy.intercept({
     method: "POST",
     url: "https://cognito-idp.*.amazonaws.com/**",
     headers: {
-      "x-amz-target": "AWSCognitoIdentityProviderService.RespondToAuthChallenge",
+      "x-amz-target":
+        "AWSCognitoIdentityProviderService.RespondToAuthChallenge",
     },
   }).as("RespondToAuthChallenge");
   cy.intercept(
@@ -33,5 +36,15 @@ Cypress.Commands.add("loginWithCognitoUI", (username, password) => {
     cy.wait("@RespondToAuthChallenge");
     cy.wait("@GetUser");
     cy.location("pathname").should("equal", "/");
+  });
+});
+
+Cypress.Commands.add("signUpWithCognitoUI", (username, password) => {
+  cy.visit("/");
+  cy.get("[data-amplify-authenticator-signup='']").within(() => {
+    cy.get('input[name="email"]').type(username);
+    cy.get('input[name="password"]').type(password, { force: true });
+    cy.get('input[name="confirm_password"]').type(password, { force: true });
+    cy.get("button[type='submit']").click({ force: true });
   });
 });
