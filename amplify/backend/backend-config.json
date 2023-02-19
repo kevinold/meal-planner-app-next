@@ -49,6 +49,15 @@
           "category": "function",
           "resourceName": "mealplannerappnexte5f263b2PreTokenGeneration",
           "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "mealplannerappnexte5f263b2PostConfirmation",
+          "triggerProvider": "Cognito"
         }
       ],
       "frontendAuthConfig": {
@@ -99,6 +108,22 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "mealplannerappnexte5f263b2PostConfirmation": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ],
+          "category": "api",
+          "resourceName": "mealplannerappnext"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "mealplannerappnexte5f263b2PreTokenGeneration": {
       "build": true,
       "dependsOn": [
@@ -130,6 +155,22 @@
         {
           "category": "function",
           "resourceName": "joinMealUserGroupFunc"
+        }
+      ]
+    },
+    "AMPLIFY_function_mealplannerappnexte5f263b2PostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "mealplannerappnexte5f263b2PostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_mealplannerappnexte5f263b2PostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "mealplannerappnexte5f263b2PostConfirmation"
         }
       ]
     },

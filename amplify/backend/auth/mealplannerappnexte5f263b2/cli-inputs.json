@@ -34,7 +34,7 @@
     "sharedId": "e5f263b2",
     "resourceName": "mealplannerappnexte5f263b2",
     "authSelections": "userPoolOnly",
-    "useDefault": "default",
+    "useDefault": "manual",
     "usernameAttributes": [
       "email"
     ],
@@ -64,11 +64,23 @@
           "Arn",
           "Name"
         ]
+      },
+      {
+        "category": "function",
+        "resourceName": "mealplannerappnexte5f263b2PostConfirmation",
+        "triggerProvider": "Cognito",
+        "attributes": [
+          "Arn",
+          "Name"
+        ]
       }
     ],
     "userPoolGroups": false,
     "adminQueries": false,
     "triggers": {
+      "PostConfirmation": [
+        "custom"
+      ],
       "PreTokenGeneration": [
         "alter-claims"
       ]
@@ -77,7 +89,7 @@
     "parentStack": {
       "Ref": "AWS::StackId"
     },
-    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PreTokenGeneration\",\n    \"lambdaFunctionName\": \"mealplannerappnexte5f263b2PreTokenGeneration\"\n  }\n]",
+    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"mealplannerappnexte5f263b2PostConfirmation\"\n  },\n  {\n    \"triggerType\": \"PreTokenGeneration\",\n    \"lambdaFunctionName\": \"mealplannerappnexte5f263b2PreTokenGeneration\"\n  }\n]",
     "permissions": [],
     "authProviders": []
   }
