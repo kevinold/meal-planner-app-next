@@ -8,7 +8,6 @@ export const getMealUserGroup = /* GraphQL */ `
       id
       owners
       inviteCode
-      members
       createdAt
       updatedAt
     }
@@ -25,7 +24,6 @@ export const listMealUserGroups = /* GraphQL */ `
         id
         owners
         inviteCode
-        members
         createdAt
         updatedAt
       }
@@ -52,7 +50,6 @@ export const mealUserGroupByInviteCode = /* GraphQL */ `
         id
         owners
         inviteCode
-        members
         createdAt
         updatedAt
       }
@@ -140,18 +137,6 @@ export const listMealHistories = /* GraphQL */ `
         mealHistoryId
       }
       nextToken
-    }
-  }
-`;
-export const getMealUserGroupByOwner = /* GraphQL */ `
-  query GetMealUserGroupByOwner($owner: String!) {
-    getMealUserGroupByOwner(owner: $owner) {
-      id
-      owners
-      inviteCode
-      members
-      createdAt
-      updatedAt
     }
   }
 `;

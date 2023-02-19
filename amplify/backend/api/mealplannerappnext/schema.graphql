@@ -28,7 +28,6 @@ type MealUserGroup
   owners: [String!]
   inviteCode: String!
     @index(name: "byInviteCode", queryField: "mealUserGroupByInviteCode")
-  members: ID
 }
 
 type Meal
@@ -53,11 +52,6 @@ type Meal
 type MealHistory @model @auth(rules: [{ allow: private }]) {
   id: ID!
   confirmed: Boolean
-}
-
-type Query {
-  getMealUserGroupByOwner(owner: String!): MealUserGroup
-    @auth(rules: [{ allow: private, provider: iam }])
 }
 
 input JoinMealUserGroupInput {

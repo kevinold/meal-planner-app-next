@@ -47,6 +47,10 @@
     "apimealplannerappnextGraphQLAPIEndpointOutput": {
       "Type": "String",
       "Default": "apimealplannerappnextGraphQLAPIEndpointOutput"
+    },
+    "apimealplannerappnextGraphQLAPIKeyOutput": {
+      "Type": "String",
+      "Default": "apimealplannerappnextGraphQLAPIKeyOutput"
     }
   },
   "Conditions": {
@@ -102,6 +106,9 @@
             },
             "API_MEALPLANNERAPPNEXT_GRAPHQLAPIENDPOINTOUTPUT": {
               "Ref": "apimealplannerappnextGraphQLAPIEndpointOutput"
+            },
+            "API_MEALPLANNERAPPNEXT_GRAPHQLAPIKEYOUTPUT": {
+              "Ref": "apimealplannerappnextGraphQLAPIKeyOutput"
             }
           }
         },
@@ -275,6 +282,14 @@
     "Region": {
       "Value": {
         "Ref": "AWS::Region"
+      }
+    },
+    "LambdaExecutionRoleArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "LambdaExecutionRole",
+          "Arn"
+        ]
       }
     }
   }

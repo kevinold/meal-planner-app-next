@@ -18,7 +18,7 @@ import {
 import { API, graphqlOperation } from "aws-amplify";
 import { useEffect, useState } from "react";
 import { createMeal, deleteMeal } from "../src/graphql/mutations";
-import { listMeals, mealUserGroupByOwner } from "../src/graphql/queries";
+import { listMeals } from "../src/graphql/queries";
 import { onCreateMeal } from "../src/graphql/subscriptions";
 
 /*
@@ -39,7 +39,10 @@ const Home: NextPage = () => {
   const [meals, setMeals] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setContent] = useState("");
-  const [userGroup, setUserGroup] = useState("");
+  const mealUserGroup = user?.getSignInUserSession()?.getAccessToken()?.payload[
+    "mealUserGroup"
+  ];
+  console.log(user.getSignInUserSession()?.getAccessToken());
 
   useEffect(() => {
     const fetchMeals = async () => {
@@ -96,23 +99,6 @@ const Home: NextPage = () => {
     }
   }
 
-  async function getUserGroup() {
-    try {
-      const { data } = await API.graphql({
-        query: mealUserGroupByOwner,
-        variables: {
-          owner: user.attributes.sub,
-        },
-      });
-
-      setUserGroup(data.mealUserGroupByOwner?.items[0].id);
-    } catch ({ errors }) {
-      console.error(errors);
-      //console.error(...errors);
-      //throw new Error(errors[0].message);
-    }
-  }
-
   return (
     <View padding="2rem">
       <Flex direction={"row"}>
@@ -120,11 +106,8 @@ const Home: NextPage = () => {
       </Flex>
       <Flex direction={"row"}>
         <Heading level={4}>
-          Welcome {user.attributes?.email} ({userGroup})
+          Welcome {user.attributes?.email} ({mealUserGroup})
         </Heading>
-        <Button type="button" onClick={getUserGroup}>
-          Get User Group
-        </Button>
         <Button type="button" onClick={signOut}>
           Sign out
         </Button>
