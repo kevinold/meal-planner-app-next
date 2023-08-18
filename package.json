@@ -7,7 +7,8 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run ",
     "tsnode": "ts-node -P tsconfig.tsnode.json",
-    "test:provisionCognitoUsers": "npm run tsnode scripts/provisionCognitoUsers.ts"
+    "test:provisionCognitoUsers": "npm run tsnode scripts/provisionCognitoUsers.ts",
+    "test:generateSeedUsers": "npm run tsnode scripts/generateSeedUsers.ts"
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^4.2.1",
