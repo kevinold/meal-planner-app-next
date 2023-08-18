@@ -1,39 +1,45 @@
-/* Amplify Params - DO NOT EDIT
-	API_MEALPLANNERAPPNEXT_GRAPHQLAPIENDPOINTOUTPUT
-	API_MEALPLANNERAPPNEXT_GRAPHQLAPIIDOUTPUT
-	API_MEALPLANNERAPPNEXT_GRAPHQLAPIKEYOUTPUT
-	ENV
-	REGION
-Amplify Params - DO NOT EDIT */ /**
- * @fileoverview
- *
- * This CloudFormation Trigger creates a handler which awaits the other handlers
- * specified in the `MODULES` env var, located at `./${MODULE}`.
- */
-
+import { API } from "@aws-amplify/api";
+import { v4 as uuidv4 } from "uuid";
+const config = {
+  aws_project_region: process.env.REGION,
+  // @ts-ignore
+  aws_appsync_graphqlEndpoint:
+    process.env.API_MEALPLANNERAPPNEXT_GRAPHQLAPIENDPOINTOUTPUT,
+  aws_appsync_region: process.env.REGION,
+  aws_appsync_authenticationType: "API_KEY",
+  aws_appsync_apiKey: process.env.API_MEALPLANNERAPPNEXT_GRAPHQLAPIKEYOUTPUT,
+};
+API.configure(config);
+const createMealUserGroupMutation = `
+  mutation CreateMealUserGroup(
+    $input: CreateMealUserGroupInput!
+    $condition: ModelMealUserGroupConditionInput
+  ) {
+    createMealUserGroup(input: $input, condition: $condition) {
+      id
+    }
+  }
+`;
 /**
- * The names of modules to load are stored as a comma-delimited string in the
- * `MODULES` env var.
- */
-const moduleNames = process.env.MODULES.split(",");
-/**
- * The array of imported modules.
- */
-const modules = moduleNames.map((name) => require(`./${name}`));
-
-/**
- * This async handler iterates over the given modules and awaits them.
- *
- * @see https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
- *
  */
 export const handler = async (event, context) => {
-  /**
-   * Instead of naively iterating over all handlers, run them concurrently with
-   * `await Promise.all(...)`. This would otherwise just be determined by the
-   * order of names in the `MODULES` var.
-   */
-  await Promise.all(modules.map((module) => module.handler(event, context)));
+  console.log(`EVENT: ${JSON.stringify(event)}`);
+  console.log(`context: ${JSON.stringify(context)}`);
+  try {
+    const result = await API.graphql({
+      query: createMealUserGroupMutation,
+      variables: {
+        input: {
+          owners: event.request.userAttributes.sub,
+          inviteCode: uuidv4(),
+        },
+      },
+    });
+    console.log("result", result);
+  } catch (error) {
+    console.log(error);
+    throw new Error(JSON.stringify(error, null, 2));
+  }
   return event;
 };
