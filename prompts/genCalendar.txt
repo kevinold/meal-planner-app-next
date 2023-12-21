@@ -1,0 +1,4 @@
+Write a function, generateCalendar, composed of many smaller functions that builds a
+an array of dates composed of dates that will fit in a calendar display of 7 columns,
+one for each week days, and 6 rows that will return the days to display in the calendar
+for any date provided to it.
