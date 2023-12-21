@@ -1,5 +1,7 @@
 import { API } from "@aws-amplify/api";
-import { v4 as uuidv4 } from "uuid";
+import uuid from "uuid";
+const uuidv4 = uuid.v4;
+
 const config = {
   aws_project_region: process.env.REGION,
   // @ts-ignore
